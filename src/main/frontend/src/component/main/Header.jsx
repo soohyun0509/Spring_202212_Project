@@ -1,10 +1,14 @@
 import React from "react";
+import '../reset.css';
+import './index.css'
+
+import logo from '../../img/해다리.png'
 
 function Header(props){
     return (
         <div className="headerContent">
             <div className="headerLogo">
-                <img src="/image/해다리.png" alt="로고" />
+                <img src={logo} alt="로고" className="logo"/>
             </div>
             <div className="menu">
                 <div className="menuCenter">
