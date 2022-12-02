@@ -1,6 +1,6 @@
 package LetterBox.domain.entity.member;
 
-import LetterBox.domain.dto.MemberDto;
+import LetterBox.domain.dto.OauthDto;
 import LetterBox.domain.entity.BaseEntity;
 import LetterBox.domain.entity.Letterbox.LetterboxEntity;
 import lombok.*;
@@ -19,10 +19,9 @@ public class MemberEntity extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int mno;
-
-    private String mname;
-    private String memail;
-   // private String mpassword;
+    private String mname; // 닉네임 저장
+    private String memail; // 아이디 저장
+    private String mrole; // 권한
 
     @OneToMany(mappedBy = "memberEntity")
     @Builder.Default
@@ -30,8 +29,8 @@ public class MemberEntity extends BaseEntity {
     private List<LetterboxEntity> letterboxEntityList= new ArrayList<>();
 
 
-    public MemberDto toDto(){
-        return MemberDto.builder()
+    public OauthDto toDto(){
+        return OauthDto.builder()
                 .mno(this.mno)
                 .mname(this.mname)
                 .memail(this.memail)

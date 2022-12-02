@@ -17,6 +17,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
         // super.configure(http);
         http
                 .oauth2Login()
+                .defaultSuccessUrl("/") // 로그인 성공시 이동 페이지
                 .userInfoEndpoint()
                 .userService(memberService);
 

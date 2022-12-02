@@ -5,8 +5,8 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 
+import Index from './component/main/Index'
 import Header from "./component/main/Header";
-import Login from "./component/login/Login"
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 /*root.render(
@@ -16,7 +16,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 );*/
 root.render(
     <React.StrictMode>
-        <Login />
+        <Index />
     </React.StrictMode>
 );
 // If you want to start measuring performance in your app, pass a function

@@ -1,6 +1,8 @@
 import React from "react";
+import {defaults} from "axios";
 
-function Footer(props){
+
+export default function Footer(props){
     return(
         <div className="footerContent">
 

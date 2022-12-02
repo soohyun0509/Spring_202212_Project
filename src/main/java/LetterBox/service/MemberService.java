@@ -1,6 +1,5 @@
 package LetterBox.service;
 
-import LetterBox.domain.dto.MemberDto;
 import LetterBox.domain.dto.OauthDto;
 import LetterBox.domain.entity.member.MemberEntity;
 import LetterBox.domain.entity.member.MemberRepository;
@@ -15,6 +14,7 @@ import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 @Service
@@ -33,8 +33,7 @@ public class MemberService implements OAuth2UserService<OAuth2UserRequest, OAuth
         // 인증결과 빼오기
         OAuth2UserService oAuth2UserService=new DefaultOAuth2UserService();
         OAuth2User oAuth2User=oAuth2UserService.loadUser(userRequest);
-        System.out.println("인증 결과 : " + oAuth2User.getAttributes());
-
+        System.out.println("인증 결과: " + oAuth2User.getAttributes());
         // 클라이언트명 가져오기
         String registrationId=userRequest.getClientRegistration().getRegistrationId();
 
@@ -47,25 +46,31 @@ public class MemberService implements OAuth2UserService<OAuth2UserRequest, OAuth
                 .getUserInfoEndpoint()
                 .getUserNameAttributeName();
 
-        //Dto
+        //Dto에 정보 담기
         OauthDto oauthDto=OauthDto.of(registrationId,oauth2UserInfo,oAuth2User.getAttributes());
 
         // Db 처리
+        Optional<MemberEntity> optional= memberRepository.findByMemail(oauthDto.getMemail());
+        MemberEntity memberEntity=null;
+        if(optional.isPresent()){
+            memberEntity=optional.get();
+        }else{
+            memberEntity=memberRepository.save(oauthDto.toEntity());
+        }
 
         Set<GrantedAuthority> authorities=new HashSet<>();
-        authorities.add(new SimpleGrantedAuthority("kakaouser"));
+        authorities.add(new SimpleGrantedAuthority(memberEntity.getMrole()));
 
-        MemberDto memberDto=new MemberDto();
+
+        // 일반회원이랑 같이 쓰는거 아니라 이거 필요없을듯!
+/*      MemberDto memberDto=new MemberDto();
         memberDto.setMemail(oauthDto.getMemail());
         memberDto.setMname(oauthDto.getMname());
         memberDto.setAuthorities(authorities);
-        memberDto.setAttributes(oauthDto.getAttributes());
-        // mname은 왜 안주지...
-        System.out.println("memberDto : "+memberDto.toString());
-        return memberDto;
+        memberDto.setAttributes(oauthDto.getAttributes());*/
+        System.out.println("memberDto : "+oauthDto.toString());
+        return oauthDto;
     }
-
-
 
 
 }
