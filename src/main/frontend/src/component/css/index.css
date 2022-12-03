@@ -1,16 +1,86 @@
-*{margin: 0;    padding: 0; border: 0;}
+
+/*영문 글꼴 */
+@import url('https://fonts.googleapis.com/css2?family=Nerko+One&display=swap');
+/*font-family: 'Nerko One', cursive;*/
+@font-face {
+    font-family: 'FlowerSalt';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2210-2@1.0/FlowerSalt.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'NanumSquareNeo-Variable';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Humanbumsuk';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2210-2@1.0/Humanbumsuk.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+*{margin: 0;    padding: 0; border: 0; font-family: 'Humanbumsuk'; }
 a{text-decoration: none; color: black;}
 li{list-style-type: none;display: inline-block;}
 
-body{height: 100%;  width: 100%;}
-.indexlogo{
-    width: 150px;
+
+
+body{height: 100%;  width: 100%; background-color: rgba(105, 152, 171,0.5);}
+.headerLogo img{width: 100px;}
+.headerLogo{
+    flex-basis: 100%;
+    text-align: center;
 }
 .headerContent{
     display: flex;
-    margin: 0 auto;
-    max-width: 41.667rem;
-    border: 1px solid black;
+   /* max-width: 41.667rem; */
+    flex-flow: row nowrap;
+    align-items: center;
+    top: 0; left: 0;
 }
 .menuRight{
+    flex-basis: 100%;
+    text-align: center;
+}
+
+.menuCenter {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    flex-basis: 100%;
+    text-align: center;
+    letter-spacing: .4em;
+}
+.menuCenter li{
+    padding-right: 30px;
+}
+.login-link{
+    position: relative;
+    letter-spacing: .4em;
+    font-family: 'Nerko One', cursive;
+}
+.login-link:hover:before{
+    transition: all .3s ease;
+    content: '';
+    width: 80px;
+    height: 27%;
+    position: absolute;
+    bottom: -5px;
+    z-index: -1;
+    background-color: #d4c6e6;
+    transition: all .3s ease;
+}
+.login-link::before{
+    content: '';
+    width: 80px;
+    height: 125%;
+    position: absolute;
+    bottom: -5px;
+    left: 25px;
+    z-index: -1;
+    background-color: #d4c6e6;
+    transition: all .3s ease;
 }

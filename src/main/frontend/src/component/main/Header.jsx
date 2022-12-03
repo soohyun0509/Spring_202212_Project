@@ -1,7 +1,7 @@
 import React from "react";
 import '../css/index.css'
 
-import logo from '../../img/해다리.png'
+import logo from '../../img/logo_transparent.png'
 import {HashRouter, BrowserRouter , Routes , Route , Link, Router} from 'react-router-dom';
 
 
@@ -9,7 +9,7 @@ export default function Header(props){
     return (
         <div className="headerContent">
             <div className="headerLogo">
-                <img src={logo} alt="로고" className="indexlogo"/>
+                <img src={logo} alt="로고" className="index-logo"/>
             </div>
 
             <div className="menuCenter">
@@ -20,9 +20,9 @@ export default function Header(props){
                 </ul>
             </div>
             <div className="menuRight">
-                <ul>
-                    <li><Link to="/member/login">Login</Link></li>
-                </ul>
+                <div className="login-box">
+                  <Link to="/member/login" className="login-link">Login</Link>
+                </div>
             </div>
 
         </div>

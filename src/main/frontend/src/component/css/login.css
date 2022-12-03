@@ -1,12 +1,10 @@
 
 .login-wrap{
     margin: 0 auto;
-    border: 1px solid black;
 }
 .loginContent{
     margin: 0 auto;
     max-width: 41.667rem;
-    border: 1px solid black;
 }
 .welcometext{
     text-align: center;
