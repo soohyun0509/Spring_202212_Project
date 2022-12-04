@@ -48,19 +48,24 @@ public class MemberService implements OAuth2UserService<OAuth2UserRequest, OAuth
 
         //Dto에 정보 담기
         OauthDto oauthDto=OauthDto.of(registrationId,oauth2UserInfo,oAuth2User.getAttributes());
-
+        if(oauthDto.getMemail()==null && registrationId.equals("github")){oauthDto.setMemail("github");}
         // Db 처리
-        Optional<MemberEntity> optional= memberRepository.findByMemail(oauthDto.getMemail());
+        Optional<MemberEntity> optional= memberRepository.findByMemailAndMrole(oauthDto.getMemail(),registrationId);
+
         MemberEntity memberEntity=null;
         if(optional.isPresent()){
-            memberEntity=optional.get();
+                // 소셜 클라이언트는 다르지만 같은 이메일 사용할 경우!
+            if(optional.get().getMrole().equals(registrationId)){
+                memberEntity=optional.get();
+            }else{ // 이메일은 같지만 소셜 클라이언트는 다르다.
+                memberEntity=memberRepository.save(oauthDto.toEntity());
+            }
         }else{
             memberEntity=memberRepository.save(oauthDto.toEntity());
         }
-
         Set<GrantedAuthority> authorities=new HashSet<>();
         authorities.add(new SimpleGrantedAuthority(memberEntity.getMrole()));
-
+        System.out.println("ddd");
 
         // 일반회원이랑 같이 쓰는거 아니라 이거 필요없을듯!
 /*      MemberDto memberDto=new MemberDto();

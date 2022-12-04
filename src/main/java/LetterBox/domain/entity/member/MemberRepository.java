@@ -10,7 +10,7 @@ import java.util.Optional;
 @Repository
 public interface MemberRepository extends JpaRepository<MemberEntity, Integer> {
 
-   @Query(value = "select * from member where memail= :memail" , nativeQuery = true)
-   Optional<MemberEntity> findByMemail(@Param("memail") String memail);
+   @Query(value = "select * from member where memail= :memail and mrole= :mrole" , nativeQuery = true)
+   Optional<MemberEntity> findByMemailAndMrole(@Param("memail") String memail , @Param("mrole") String mrole);
 
 }

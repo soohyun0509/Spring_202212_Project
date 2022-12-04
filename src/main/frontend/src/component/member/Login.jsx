@@ -16,21 +16,35 @@ function Login(props){
                     <div className="loginContainer">
                         <div className="kakaologin">
                             <button type="button" className="loginText kakao">
-                                <a href="/oauth2/authorization/kakao">카카오계정으로 시작하기</a>
+                                <a href="/oauth2/authorization/kakao">Kakao계정으로 시작하기</a>
                             </button>
                         </div>
                     </div>
                     <div className="loginContainer">
                         <div className="naverlogin">
                             <button type="button" className="loginText naver">
-                                <a href="/oauth2/authorization/kakao">네이버계정으로 시작하기</a>
+                                <a href="/oauth2/authorization/naver">Naver계정으로 시작하기</a>
                             </button>
                         </div>
                     </div>
                     <div className="loginContainer">
                         <div className="googlelogin">
                             <button type="button" className="loginText google">
-                                <a href="/oauth2/authorization/kakao">구글계정으로 시작하기</a>
+                                <a href="/oauth2/authorization/google">Google계정으로 시작하기</a>
+                            </button>
+                        </div>
+                    </div>
+                    <div className="loginContainer">
+                        <div className="twitterlogin">
+                            <button type="button" className="loginText twitter">
+                                <a href="/oauth2/authorization/twitter">Twitter계정으로 시작하기</a>
+                            </button>
+                        </div>
+                    </div>
+                    <div className="loginContainer">
+                        <div className="googlelogin">
+                            <button type="button" className="loginText github">
+                                <a href="/oauth2/authorization/github">Git계정으로 시작하기</a>
                             </button>
                         </div>
                     </div>

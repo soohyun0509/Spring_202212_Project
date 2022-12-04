@@ -37,6 +37,9 @@ public class OauthDto implements OAuth2User {
     ///////////////////////////////////////////////////////
     public static OauthDto of(String registrationId , String oauth2UserInfo , Map<String ,Object> attributes){
         if(registrationId.equals("kakao")){return ofKakao(registrationId, oauth2UserInfo,attributes);}
+        else if(registrationId.equals("naver")){return ofNaver(registrationId,oauth2UserInfo,attributes);}
+        else if(registrationId.equals("google")){return ofGoogle(registrationId,oauth2UserInfo,attributes);}
+        else if(registrationId.equals("github")){return ofGithub(registrationId,oauth2UserInfo,attributes);}
 
         // 회사 추가하기
         return null;
@@ -54,6 +57,36 @@ public class OauthDto implements OAuth2User {
                 .attributes(attributes)
                 .build();
 
+    }
+
+    public static OauthDto ofNaver(String registrationId , String oauth2UserInfo , Map<String ,Object> attributes){
+        Map<String, Object> response=(Map<String, Object>)attributes.get(oauth2UserInfo);
+        return OauthDto.builder()
+                .memail((String)response.get("email"))
+                .mname((String)response.get("name"))
+                .registrationId(registrationId)
+                .oauth2UserInfo(oauth2UserInfo)
+                .attributes(attributes)
+                .build();
+    }
+    public static OauthDto ofGoogle(String registrationId , String oauth2UserInfo , Map<String ,Object> attributes){
+        return OauthDto.builder()
+                .memail((String)attributes.get("login"))
+                .mname((String)attributes.get("name"))
+                .registrationId(registrationId)
+                .oauth2UserInfo(oauth2UserInfo)
+                .attributes(attributes)
+                .build();
+    }
+    public static OauthDto ofGithub(String registrationId , String oauth2UserInfo , Map<String ,Object> attributes){
+        System.out.println("github attributes : " + attributes);
+        return OauthDto.builder()
+                .memail((String)attributes.get("email"))
+                .mname((String)attributes.get("name"))
+                .registrationId(registrationId)
+                .oauth2UserInfo(oauth2UserInfo)
+                .attributes(attributes)
+                .build();
     }
 
     public MemberEntity toEntity(){

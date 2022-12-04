@@ -33,6 +33,7 @@
 .kakao{background-image: url("../../img/kakaotalk_sharing_btn_small.png");}
 .naver{background-image: url("../../img/구글버튼.jpg");}
 .google{background-image: url("../../img/btnG_아이콘사각.png");}
+.github{background-image: url("../../img/github.png");}
 .loginText{
     display: block;
     width: 100%;
@@ -41,20 +42,14 @@
     padding: 20px;
     text-align: center;
     cursor: pointer;
-    border: 1px solid black;
     background-repeat: no-repeat;
     background-position: 1.5rem 50%;
     background-size: 1.8rem auto;
+    box-shadow: 2px 2px 4px rgba(97, 192, 191,0.8);
 }
 .loginText:hover{
-    border-color: #a3a3a3;
-    color: #dedede;
+    border: 1px solid rgba(97, 192, 191,0.8);
 }
-.kakaologin{
-    box-shadow: 5px 5px 5px #1A374D;
-}
-.kakaologin button{
-    background-color: #6998AB;
-
-    /*background-color: rgba(26, 55, 77,0.8);*/
+button{
+    background-color: rgba(187, 222, 214,0.8);
 }
