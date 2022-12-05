@@ -1,0 +1,8 @@
+.letterbox-content{
+    margin: 0 auto;
+    max-width: 41.667rem;
+}
+.letterbox-title{
+    text-align: center;
+    margin: 0 -4rem 3rem;   font-size: 2.2rem;
+}

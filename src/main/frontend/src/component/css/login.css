@@ -1,38 +1,40 @@
-
-.login-wrap{
-    margin: 0 auto;
-}
 .loginContent{
     margin: 0 auto;
     max-width: 41.667rem;
 }
 .welcometext{
     text-align: center;
-    margin: 0 -4rem 3rem;   font-size: 2.5rem;
-    border: 1px solid black;
+    font-size: 2.2rem;
+
+}
+.text1{
+    font-size: 1.8rem;
+    margin-bottom: 20px;
 }
 
+.text2{
+    font-size: 2.5rem;
+}
 /*로그인 연결*/
 .sns-login{
-    border: 1px solid black;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     margin: 0 auto;
-    padding: 50px 0;
+    padding: 25px 0;
 }
 
 .loginContainer{
     position: relative;
     margin: 0 auto;
-    width: 300px; height: 85px;
+    width: 400px; height: 85px;
 }
 
 .kakao{background-image: url("../../img/kakaotalk_sharing_btn_small.png");}
-.naver{background-image: url("../../img/구글버튼.jpg");}
-.google{background-image: url("../../img/btnG_아이콘사각.png");}
+.google{background-image: url("../../img/구글버튼.jpg");}
+.naver{background-image: url("../../img/btnG_아이콘사각.png");}
 .github{background-image: url("../../img/github.png");}
 .loginText{
     display: block;
@@ -42,6 +44,7 @@
     padding: 20px;
     text-align: center;
     cursor: pointer;
+    font-size: 1.3rem;
     background-repeat: no-repeat;
     background-position: 1.5rem 50%;
     background-size: 1.8rem auto;

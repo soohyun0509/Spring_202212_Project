@@ -33,6 +33,8 @@ dependencies {
 tasks.named('test') {
     useJUnitPlatform()
 }
+
+/*리액트 스프링부트 연결*/
 def frontendDir = "$projectDir/src/main/frontend"
 
 sourceSets {

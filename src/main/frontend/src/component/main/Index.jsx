@@ -9,19 +9,18 @@ import Diary from "../page/Diary";
 
 export default function Index(props){
     return(
-
-        <div>
+        <div className="index-wrap">
             <HashRouter>
                 <Header/>
-                    <div className="mainContainer">
-                    </div>
+                <div className="page-wrap">
+                    <Routes>
+                        <Route path="/"></Route>
+                        <Route path="/member/login" element={<Login/>}></Route>
+                        <Route path="/page/letterbox" element={<Letterbox/>}></Route>
+                        <Route path="/page/diary" element={<Diary/>}></Route>
+                    </Routes>
+                </div>
                 <Footer/>
-                <Routes>
-                    <Route path="/"></Route>
-                    <Route path="/member/login" element={<Login/>}></Route>
-                    <Route path="/page/letterbox" element={<Letterbox/>}></Route>
-                    <Route path="/page/diary" element={<Diary/>}></Route>
-                </Routes>
             </HashRouter>
         </div>
 
