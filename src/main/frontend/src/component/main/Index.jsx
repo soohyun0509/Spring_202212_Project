@@ -10,7 +10,7 @@ import Diary from "../page/Diary";
 export default function Index(props){
     return(
         <div className="index-wrap">
-            <HashRouter>
+            <BrowserRouter>
                 <Header/>
                 <div className="page-wrap">
                     <Routes>
@@ -21,7 +21,7 @@ export default function Index(props){
                     </Routes>
                 </div>
                 <Footer/>
-            </HashRouter>
+            </BrowserRouter>
         </div>
 
 

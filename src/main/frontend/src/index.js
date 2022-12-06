@@ -4,9 +4,9 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-
 import Index from './component/main/Index'
 import Header from "./component/main/Header";
+import axios from 'axios'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 /*root.render(

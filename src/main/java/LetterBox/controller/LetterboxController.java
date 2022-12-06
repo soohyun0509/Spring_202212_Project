@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequestMapping("/letterbox")
 public class LetterboxController {
 
     @Autowired
@@ -13,9 +14,9 @@ public class LetterboxController {
 
     // 편지 작성 완료 버튼
     // 이거 post라서 config에서 뭐 해줘야되나...
-    @PostMapping("/letterSend")
-    public boolean letterSend(@RequestBody LetterboxDto lDto){
-        return letterboxservice.letterSend(lDto);
+    @PostMapping("/sendletter")
+    public boolean sendletter(@RequestBody LetterboxDto lDto){
+        return letterboxservice.sendletter(lDto);
     }
 
     // 페이지에 편지 받은게 표시되게 해야되는데...

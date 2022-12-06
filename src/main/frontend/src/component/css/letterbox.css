@@ -1,8 +1,30 @@
 .letterbox-content{
+    background-color:  rgba(244, 238, 255,0.5);
+    max-width: 100rem;
     margin: 0 auto;
-    max-width: 41.667rem;
+    height: 70vh;
 }
 .letterbox-title{
     text-align: center;
-    margin: 0 -4rem 3rem;   font-size: 2.2rem;
+    font-size: 2.2rem;
+}
+
+.letter{
+    position: relative;
+    height: 60vh;
+    border: 1px solid black;
+
+}
+.letterbox-writebtn{
+    padding: 15px;
+}
+.lettersheet{
+    width: 500px;
+    height: 40vh;
+    position: absolute;
+    top: 5%; left:50%; transform:translateX(-50%);
+    border: 1px solid black;
+    background-image: url("../../img/letter1.png");
+    background-repeat: no-repeat;
+    background-size: cover;
 }

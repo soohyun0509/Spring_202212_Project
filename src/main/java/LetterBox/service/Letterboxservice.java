@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 public class Letterboxservice {
 
     // 편지 작성 완료 버튼
-    public boolean letterSend(LetterboxDto lDto){
+    public boolean sendletter(LetterboxDto lDto){
         return false;
 
     }
