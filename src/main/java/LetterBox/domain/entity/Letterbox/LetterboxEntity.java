@@ -1,5 +1,6 @@
 package LetterBox.domain.entity.Letterbox;
 
+import LetterBox.domain.dto.LetterboxDto;
 import LetterBox.domain.entity.BaseEntity;
 import LetterBox.domain.entity.Category.LetterCategoryEntity;
 import LetterBox.domain.entity.member.MemberEntity;
@@ -20,8 +21,6 @@ public class LetterboxEntity extends BaseEntity { // 시간상속
     private String sendp; // 보낸 사람
     private String sendt; // 보낸 메시지
 
-
-
     // 연관관계
     // mno -> 받는 사람이 들어감!!!
     @ManyToOne
@@ -34,5 +33,17 @@ public class LetterboxEntity extends BaseEntity { // 시간상속
     @JoinColumn(name = "cno")
     @ToString.Exclude
     private LetterCategoryEntity letterCategoryEntity;
+
+
+    public LetterboxDto toDto(){
+        return LetterboxDto.builder()
+                .lno(this.lno)
+                .sendp(this.sendp)
+                .sendt(this.sendt)
+                .mno(memberEntity.getMno())
+                .cno(letterCategoryEntity.getCno())
+                .build();
+    }
+
 
 }

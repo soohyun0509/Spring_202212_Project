@@ -16,6 +16,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
     protected void configure(HttpSecurity http) throws Exception {
         // super.configure(http);
         http
+                .csrf()
+                .ignoringAntMatchers("/letterbox/sendletter")
+                .and()
                 .oauth2Login()
                 .defaultSuccessUrl("/") // 로그인 성공시 이동 페이지
                 .userInfoEndpoint()

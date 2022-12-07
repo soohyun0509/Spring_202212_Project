@@ -4,8 +4,10 @@ import LetterBox.domain.dto.OauthDto;
 import LetterBox.domain.entity.member.MemberEntity;
 import LetterBox.domain.entity.member.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
 import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
 import org.springframework.security.oauth2.client.userinfo.OAuth2UserService;
@@ -13,6 +15,7 @@ import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
@@ -28,6 +31,7 @@ public class MemberService implements OAuth2UserService<OAuth2UserRequest, OAuth
 
     // 로그인 메소드 [SNS 인증]
     @Override
+    @Transactional
     public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
 
         // 인증결과 빼오기
@@ -63,19 +67,25 @@ public class MemberService implements OAuth2UserService<OAuth2UserRequest, OAuth
         }else{
             memberEntity=memberRepository.save(oauthDto.toEntity());
         }
+        oauthDto.setMno(memberEntity.getMno());
         Set<GrantedAuthority> authorities=new HashSet<>();
         authorities.add(new SimpleGrantedAuthority(memberEntity.getMrole()));
-        System.out.println("ddd");
 
-        // 일반회원이랑 같이 쓰는거 아니라 이거 필요없을듯!
-/*      MemberDto memberDto=new MemberDto();
-        memberDto.setMemail(oauthDto.getMemail());
-        memberDto.setMname(oauthDto.getMname());
-        memberDto.setAuthorities(authorities);
-        memberDto.setAttributes(oauthDto.getAttributes());*/
         System.out.println("memberDto : "+oauthDto.toString());
         return oauthDto;
     }
 
+    // 로그인 여부 가져오기
+    public OauthDto getmemberMno(){
+        Authentication authentication= SecurityContextHolder.getContext().getAuthentication();
+
+        Object principal=authentication.getPrincipal();
+        System.out.println("principal : " + principal);
+        if(principal.equals("anonymousUser")){
+            return null;
+        }else{
+            return (OauthDto) principal;
+        }
+    }
 
 }

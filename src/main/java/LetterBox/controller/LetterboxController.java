@@ -13,9 +13,9 @@ public class LetterboxController {
     private Letterboxservice letterboxservice;
 
     // 편지 작성 완료 버튼
-    // 이거 post라서 config에서 뭐 해줘야되나...
     @PostMapping("/sendletter")
     public boolean sendletter(@RequestBody LetterboxDto lDto){
+
         return letterboxservice.sendletter(lDto);
     }
 

@@ -1,15 +1,45 @@
 package LetterBox.service;
 
 import LetterBox.domain.dto.LetterboxDto;
+import LetterBox.domain.entity.Letterbox.LetterboxEntity;
+import LetterBox.domain.entity.Letterbox.LetterboxRepository;
+import LetterBox.domain.entity.member.MemberEntity;
+import LetterBox.domain.entity.member.MemberRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import javax.transaction.Transactional;
+import java.util.Optional;
 
 @Service
 public class Letterboxservice {
 
-    // 편지 작성 완료 버튼
-    public boolean sendletter(LetterboxDto lDto){
-        return false;
+    @Autowired
+    private LetterboxRepository letterboxRepository;
+    @Autowired
+    private MemberRepository memberRepository;
 
+    // 편지 작성 완료 버튼
+    @Transactional
+    public boolean sendletter(LetterboxDto lDto){
+
+        // mno이 존재하면 저장하게
+        Optional<MemberEntity> optional=memberRepository.findById(lDto.getMno());
+        if(optional.isPresent()){
+            MemberEntity mEntity=optional.get();
+            LetterboxEntity lEntity=letterboxRepository.save(lDto.toEntity());
+            if(lEntity.getLno()!=0){ // 0아니면 성공
+
+                // 회원-편지함 연관관계
+                lEntity.setMemberEntity(mEntity);
+                mEntity.getLetterboxEntityList().add(lEntity);
+
+                return true;
+
+            }
+
+        }
+        return false;
     }
 
     // 편지 리스트 출력 메서드

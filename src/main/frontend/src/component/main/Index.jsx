@@ -15,7 +15,7 @@ export default function Index(props){
                 <div className="page-wrap">
                     <Routes>
                         <Route path="/"></Route>
-                        <Route path="/member/login" element={<Login/>}></Route>
+                        <Route path="/member/login/{mno}" element={<Login/>}></Route>
                         <Route path="/page/letterbox" element={<Letterbox/>}></Route>
                         <Route path="/page/diary" element={<Diary/>}></Route>
                     </Routes>
