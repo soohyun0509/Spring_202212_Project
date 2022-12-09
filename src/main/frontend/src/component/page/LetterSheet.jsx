@@ -1,9 +1,10 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import axios from "axios";
 import {useParams} from "react-router-dom";
 // 편지지 컴포넌트 생성
 export default function LetterSheet(props){
     const [letter, setLetteropen] =useState(true);
+    const [mname, setMname] =useState("");
 
     console.log()
 
@@ -14,8 +15,19 @@ export default function LetterSheet(props){
 
     const mno=useParams().mno; // url에서 회원번호 가져오기
 
-    // mno갖고가서 mname 갖고와야돼...
-
+    // 편지지에 출력시킬 mname 가져오기
+    // 링크에서 mno뽑아가지고 mname 가져오면 될듯!
+    const getMname=()=>{
+        axios.get("/member/getMname" , {params : {mno : mno}})
+            .then(res=>{
+                console.log(res.data);
+                if(res.data!=""){ // null이 아니면 이름이랑 넣어주기
+                    setMname("To . "+res.data)
+                }
+            })
+            .catch(err=>{console.log(err)})
+    }
+    useEffect(getMname,[]);
     // 편지 내용 백엔드 전송
     const sendbtn=()=>{
         let info={
@@ -40,7 +52,7 @@ export default function LetterSheet(props){
     return(
         <div className="lettersheet">
             <div className="takep-content">
-                <input type="text" className="takep" placeholder="받는 사람 표시 부분"/>
+                <input type="text" className="takep" placeholder={mname}/>
             </div>
             <div className="sendt-content">
                 <input type="text" className="sendt" placeholder="내용 작성 부분"/>

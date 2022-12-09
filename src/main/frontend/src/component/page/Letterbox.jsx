@@ -14,19 +14,17 @@ export default function Letterbox(props){
     return(
         <div className="wrap">
             <div className="letterbox-content">
-                <div className="letterbox-title">
-                    LetterBox
-                </div>
-                <div>
-                    <button type="button" className="letterbox-writebtn" onClick={()=>setLetteropen(!letter)}>
-                        {letter && <span>그만두기</span>}{!letter && <span>작성하기</span>}
-                    </button>
-                    <div className="letter-content">
-                        {letter && <LetterSheet/>}
-                    </div>
-                </div>
+            </div>
+            <div>
+                <button type="button" className="letterbox-writebtn btn-8" onClick={()=>setLetteropen(!letter)}>
+                    {letter && <span>그만두기</span>}{!letter && <span>작성하기</span>}
+                </button>
+            </div>
+            <div className="letter-content">
+                {letter && <LetterSheet/>}
             </div>
         </div>
+
     );
 }
 

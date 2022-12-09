@@ -1,23 +1,99 @@
 .letterbox-content{
-    background-color:  rgba(244, 238, 255,0.5);
     max-width: 100rem;
     margin: 0 auto;
-    height: 70vh;
+    height: 85vh;
+    background-image: url("../../img/back-img1.jpg");
+    background-repeat: no-repeat;
+    background-position: 1.5rem 55%;
+    background-size: cover;
+    opacity: 0.7;
 }
 .letterbox-title{
     text-align: center;
     font-size: 2.2rem;
 }
 
-.letter{
-    position: relative;
-    height: 60vh;
-    border: 1px solid black;
-
-}
+/*------------------------ 작성버튼 -------------------------------*/
 .letterbox-writebtn{
-    padding: 15px;
+    position: absolute;
+    top: 20%; left:50%; transform:translateX(-50%);
+    width: 150px;
+    height: 40px;
+    color: #A6B1E1;
+    border-radius: 5px;
+    padding: 10px 25px;
+    font-size: 20px;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-block;
+    box-shadow:inset 2px 2px 2px 0px rgba(66, 72, 116,0.8),
+    7px 7px 20px 0px rgba(0,0,0,.1),
+    4px 4px 5px 0px rgba(0,0,0,.1);
+    outline: none;
 }
+.btn-8 {
+    background-color: #424874;
+    line-height: 42px;
+    padding: 0;
+    border: none;
+}
+.btn-8 span {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+.btn-8:before,
+.btn-8:after {
+    position: absolute;
+    content: "";
+    right: 0;
+    bottom: 0;
+    background: #c797eb;
+    transition: all 0.3s ease;
+}
+.btn-8:before{
+    height: 0%;
+    width: 2px;
+}
+.btn-8:after {
+    width: 0%;
+    height: 2px;
+}
+.btn-8:hover:before {
+    height: 100%;
+}
+.btn-8:hover:after {
+    width: 100%;
+}
+.btn-8:hover{
+    background:  rgba(166, 177, 225,0.8);
+}
+.btn-8 span:hover{
+    color: #424874;
+}
+.btn-8 span:before,
+.btn-8 span:after {
+    position: absolute;
+    content: "";
+    left: 0;
+    top: 0;
+    background: #c797eb;
+    transition: all 0.3s ease;
+}
+.btn-8 span:before {
+    width: 2px;
+    height: 0%;
+}
+.btn-8 span:after {
+    height: 2px;
+    width: 0%;
+}
+.btn-8 span:hover:before {height: 100%;}
+.btn-8 span:hover:after {width: 100%;}
+
+
 .lettersheet{
     width: 500px;
     height: 40vh;
@@ -27,4 +103,5 @@
     background-image: url("../../img/letter1.png");
     background-repeat: no-repeat;
     background-size: cover;
+    opacity: 100;
 }

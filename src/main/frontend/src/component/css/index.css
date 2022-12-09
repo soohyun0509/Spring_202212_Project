@@ -34,7 +34,7 @@ li{list-style-type: none;display: inline-block;}
 body{height: 100%;  width: 100%; background-color: rgba(250, 227, 217,0.4);}
 
 /*-------------------------- 헤더 -------------------------------------*/
-.headerLogo img{width: 100px;}
+.headerLogo img{width: 80px;}
 .headerLogo{
     flex-basis: 100%;
     text-align: center;
@@ -45,7 +45,7 @@ body{height: 100%;  width: 100%; background-color: rgba(250, 227, 217,0.4);}
     flex-flow: row nowrap;
     align-items: center;
     top: 0; left: 0;
-    margin-bottom: 50px;
+    margin-bottom: 20px;
 }
 .menuRight{
     flex-basis: 100%;
@@ -90,7 +90,6 @@ body{height: 100%;  width: 100%; background-color: rgba(250, 227, 217,0.4);}
 }
 
 /*-------------------------- 푸터 -------------------------------------*/
-
 .index-wrap{
     min-height: 90vh;
     overflow-x: hidden;
@@ -104,7 +103,7 @@ body{height: 100%;  width: 100%; background-color: rgba(250, 227, 217,0.4);}
     flex-flow: row nowrap;
     align-items: center;
     font-size: 15px;
-    height: 50px;
+    height: 40px;
     position: absolute;
     bottom: 0;
     left: 0;

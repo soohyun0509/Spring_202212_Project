@@ -88,4 +88,18 @@ public class MemberService implements OAuth2UserService<OAuth2UserRequest, OAuth
         }
     }
 
+    // mno으로 편지지 주인 mname 가져오기
+    public String getMname(int mno){
+        Optional<MemberEntity> optional=memberRepository.findById(mno);
+        System.out.println(optional + " : optional getMname");
+        // mno에 해당하는 레코드가 있으면
+        if(optional.isPresent()){
+            MemberEntity memberEntity=optional.get(); // optional에서 정보뽑아가지고 넣어주기
+            // dto로 변환해서 나가야함
+            OauthDto oauthDto=memberEntity.toDto();
+            return oauthDto.getMname();
+        }
+        return null;
+    }
+
 }

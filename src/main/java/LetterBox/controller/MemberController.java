@@ -5,6 +5,7 @@ import LetterBox.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -21,7 +22,12 @@ public class MemberController {
     }
 
     // 해당 링크에 주인이 누구인지도 가지고 와야돼
+    @GetMapping("/getMname")
+    public String getMname(@RequestParam("mno")int mno){
+        System.out.println("1");
+        return memberService.getMname(mno);
 
+    }
     // 로그아웃
 
 
