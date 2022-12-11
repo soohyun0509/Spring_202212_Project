@@ -41,7 +41,7 @@ public class LetterboxEntity extends BaseEntity { // 시간상속
                 .sendp(this.sendp)
                 .sendt(this.sendt)
                 .mno(memberEntity.getMno())
-                .cno(letterCategoryEntity.getCno())
+//                .cno(letterCategoryEntity.getCno())
                 .build();
     }
 

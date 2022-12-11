@@ -40,11 +40,12 @@
     background-repeat: no-repeat;
     background-position: 1.5rem 50%;
     background-size: 1.8rem auto;
-    box-shadow: 2px 2px 4px rgba(97, 192, 191,0.8);
+    box-shadow: 2px 2px 4px rgba(244, 238, 255);
 }
 .loginText:hover{
-    border: 1px solid rgba(97, 192, 191,0.8);
+    border: 1px solid rgba(244, 238, 255);
 }
 button{
-    background-color: rgba(187, 222, 214,0.8);
+    background-color: rgba(220, 214, 247,0.8);
+    border-radius: 10px;
 }

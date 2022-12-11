@@ -20,21 +20,25 @@
     font-weight: normal;
     font-style: normal;
 }
+
 @font-face {
-    font-family: 'Pretendard-Regular';
-    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
-    font-weight: 400;
+    font-family: 'SANGJUGyeongcheonIsland';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2112@1.0/SANGJUGyeongcheonIsland.woff') format('woff');
+    font-weight: normal;
     font-style: normal;
 }
-
 /*-------------------------- 전체 설정 -------------------------------------*/
-*{margin: 0; padding: 0; border: none; font-family: 'GangwonEdu_OTFBoldA'; }
-a{text-decoration: none; color: black;}
+*{margin: 0; padding: 0; border: none; color: white; }
+a{text-decoration: none;}
 li{list-style-type: none;display: inline-block;}
-body{height: 100%;  width: 100%; background-color: rgba(250, 227, 217,0.4);}
+body{
+    height: 100%;  width: 100%;
+    background: linear-gradient(#3e4577, #a5abe0);
+    font-family: 'Humanbumsuk'
+}
 
 /*-------------------------- 헤더 -------------------------------------*/
-.headerLogo img{width: 80px;}
+
 .headerLogo{
     flex-basis: 100%;
     text-align: center;
@@ -45,20 +49,23 @@ body{height: 100%;  width: 100%; background-color: rgba(250, 227, 217,0.4);}
     flex-flow: row nowrap;
     align-items: center;
     top: 0; left: 0;
-    margin-bottom: 20px;
+    margin: 20px 0;
+    font-size: 20px;
+    font-family: 'Humanbumsuk';
 }
 .menuRight{
     flex-basis: 100%;
     text-align: center;
 }
-.menuCenter {
+.menuCenter{
     width: 100%;
     display: flex;
     justify-content: center;
     flex-direction: column;
     flex-basis: 100%;
     text-align: center;
-    letter-spacing: .4em;
+    letter-spacing: .2em;
+    color: white;
 }
 .menuCenter li{
     padding-right: 30px;
@@ -66,27 +73,7 @@ body{height: 100%;  width: 100%; background-color: rgba(250, 227, 217,0.4);}
 .login-link{
     position: relative;
     letter-spacing: .4em;
-    font-family: 'Nerko One', cursive;
-}
-.login-link:hover:before{
-    transition: all .3s ease;
-    content: '';
-    width: 80px;
-    height: 27%;
-    position: absolute;
-    bottom: -5px;
-    z-index: -1;
-}
-.login-link::before{
-    content: '';
-    width: 80px;
-    height: 125%;
-    position: absolute;
-    bottom: -5px;
-    left: 25px;
-    z-index: -1;
-    background-color: #BBDED6;
-    transition: all .3s ease;
+
 }
 
 /*-------------------------- 푸터 -------------------------------------*/
@@ -98,7 +85,8 @@ body{height: 100%;  width: 100%; background-color: rgba(250, 227, 217,0.4);}
     padding-bottom: 93px;
 }
 .footer-content{
-    padding: 35px 20px 0 20px;
+    padding: 35px 20px 20px 20px;
+
     display: flex;
     flex-flow: row nowrap;
     align-items: center;
@@ -122,11 +110,21 @@ body{height: 100%;  width: 100%; background-color: rgba(250, 227, 217,0.4);}
 .footer-center{
     width: 100%;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     flex-basis: 100%;
     padding-right: 50px;
-    letter-spacing: .4em;
-    font-size: 1.5rem;
+    font-size: 30px;
+    letter-spacing: .5rem;
+}
+.footer-center img{
+    width: 50px; height: 25px;
+    margin-bottom: 5px;
+    margin-left: 42%;
+
+}
+.footer-center p{
+text-align: center;
 }
 .page-wrap{
     margin: 0 -4rem 1.5rem;
@@ -134,4 +132,43 @@ body{height: 100%;  width: 100%; background-color: rgba(250, 227, 217,0.4);}
 .footer-gitlogo{
     width: 40px;
     padding-bottom: 20px;
+}
+
+
+
+.fadein{
+    text-align: center;
+    margin-top: 220px;
+
+}
+.fadein{
+    font-size: medium;
+    position: relative;
+    overflow: hidden;
+    animation: fadein 5s ease-in-out;
+
+
+}
+
+
+@keyframes fadein{
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: none;
+    }
+
+}
+.text1{
+    font-size: 5rem;
+}
+.text2{
+    font-size: 2.5rem;
+}
+
+.star{
+    width: 100px;
 }

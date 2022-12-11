@@ -9,6 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.io.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -30,6 +34,14 @@ public class Letterboxservice {
             LetterboxEntity lEntity=letterboxRepository.save(lDto.toEntity());
             if(lEntity.getLno()!=0){ // 0아니면 성공
 
+                // 여기서 필터링해서 저장하기
+                // 반환값 null아니면 메시지 set으로 바꿔서 db에 저장하기
+                String cleanmsg=filterWord(lDto.getSendt());
+                if(cleanmsg!=null){
+                    lEntity.setSendt(cleanmsg);
+                    System.out.println(cleanmsg);
+                }
+
                 // 회원-편지함 연관관계
                 lEntity.setMemberEntity(mEntity);
                 mEntity.getLetterboxEntityList().add(lEntity);
@@ -42,15 +54,57 @@ public class Letterboxservice {
         return false;
     }
 
-    // 편지 리스트 출력 메서드
-    public LetterboxDto letterList(int mno){
-        // mno을 받아서 연하장 게시판에 해당 mno에 맞는 편지만 출력시키기
-        // 갯수만 뽑아서 가져와도 될듯! 일단은...
-        // 어차피 당장 편지 열어볼 수 있게 할것도 아니니까
 
+    // 비속어 필터링 - 저장할때 한번만 해야되나 아니면 적을떄마다 계속해야되나...
+    public String filterWord(String msg) {
+        FileInputStream fis;
+        InputStreamReader isr;
+        BufferedReader breader;
+        try {
+            fis = new FileInputStream("C:\\fword_list.txt");
+            isr = new InputStreamReader(fis, "UTF-8");
+            breader = new BufferedReader(isr);
+            // 파일에서 한줄씩 읽어와서 words에 저장
+            String words = breader.readLine();
+            // 띄어쓰기로 구분해서 한줄씩 저장
+            String[] warr = words.split(",");
+
+            for(int i=0; i<warr.length; i++){
+                // 비속어 배열과 텍스트 비교해서
+                if(msg.contains(warr[i])){
+                    // 해당 단어의 길이 저장해서 글자 바꿔주기
+                    String findtext=warr[i];
+                    String cleantext=""; // 바꾼 문자열 저장할 변수
+                    for(int j=0; j<findtext.length(); j++){
+                        cleantext+="❤️"; // 문자열 길이만큼 * 추가해주기
+                    }
+                    msg=msg.replaceAll(findtext,cleantext);
+                    return msg;
+                }
+            }
+        } catch (Exception e) {
+            System.out.println(e + "필터링 에러");
+        }
 
         return null;
+
     }
+
+    // mno에 해당하는 편지리스트 출력시키기
+    public List<LetterboxDto> getLetterList(int mno){
+        System.out.println("mno : " +mno);
+        List<LetterboxEntity> lentityList= letterboxRepository.findByMno(mno);
+
+        List<LetterboxDto> ldtoList=new ArrayList<>();
+
+        // 하나씩 뽑아서 dto로 담자
+        for(LetterboxEntity lentity : lentityList){
+            ldtoList.add(lentity.toDto());
+        }
+        return ldtoList;
+
+    }
+
 
 
 
