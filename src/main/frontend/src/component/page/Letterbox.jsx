@@ -47,6 +47,7 @@ export default function Letterbox(props){
                 <button type="button" onClick={()=>setLetteropen(!letter)}>
                     {letter && <img className="rabbit" src={rabbit1} />}{!letter && <img className="rabbit" src={rabbit2} />}
                 </button>
+                <p>토끼를 눌러주세요!</p>
             </div>
             <div>
             </div>

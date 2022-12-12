@@ -76,7 +76,7 @@ public class Letterboxservice {
                     String findtext=warr[i];
                     String cleantext=""; // 바꾼 문자열 저장할 변수
                     for(int j=0; j<findtext.length(); j++){
-                        cleantext+="❤️"; // 문자열 길이만큼 * 추가해주기
+                        cleantext+="❤"; // 문자열 길이만큼  추가해주기
                     }
                     msg=msg.replaceAll(findtext,cleantext);
                     return msg;
@@ -85,9 +85,7 @@ public class Letterboxservice {
         } catch (Exception e) {
             System.out.println(e + "필터링 에러");
         }
-
         return null;
-
     }
 
     // mno에 해당하는 편지리스트 출력시키기
