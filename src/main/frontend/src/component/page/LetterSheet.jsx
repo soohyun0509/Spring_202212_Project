@@ -13,12 +13,11 @@ export default function LetterSheet(props){
     // 아 mno을 먼저 갖고와서 해결해야겠다 db에 저장이 안돼
     // 연결되는 링크에 변수를 같이 전달해야되는것같은데.........
 
-    const mno=useParams().mno; // url에서 회원번호 가져오기
-
+    const param=useParams().mno; // url에서 회원번호 가져오기
     // 편지지에 출력시킬 mname 가져오기
     // 링크에서 mno뽑아가지고 mname 가져오면 될듯!
     const getMname=()=>{
-        axios.get("/member/getMname" , {params : {mno : mno}})
+        axios.get("/member/getMname" , {params : {mno : param}})
             .then(res=>{
                 console.log(res.data);
                 if(res.data!=""){ // null이 아니면 이름이랑 넣어주기
@@ -31,10 +30,9 @@ export default function LetterSheet(props){
     // 편지 내용 백엔드 전송
     const sendbtn=()=>{
         let info={
-            mno : mno,
+            mno : param,
             sendt : document.querySelector(".sendt").value,
-            sendp : document.querySelector(".sendp").value,
-            cno : 1 // 편지지 카테고리 보내기 ...일단 1로 하고 이거 어떻게 하지...
+            sendp : document.querySelector(".sendp").value
         }
         axios
             .post("/letterbox/sendletter", info)

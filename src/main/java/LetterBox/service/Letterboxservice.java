@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -26,7 +25,7 @@ public class Letterboxservice {
     // 편지 작성 완료 버튼
     @Transactional
     public boolean sendletter(LetterboxDto lDto){
-
+        System.out.println("lDto : " + lDto.toString());
         // mno이 존재하면 저장하게
         Optional<MemberEntity> optional=memberRepository.findById(lDto.getMno());
         if(optional.isPresent()){
@@ -47,13 +46,11 @@ public class Letterboxservice {
                 mEntity.getLetterboxEntityList().add(lEntity);
 
                 return true;
-
             }
 
         }
         return false;
     }
-
 
     // 비속어 필터링 - 저장할때 한번만 해야되나 아니면 적을떄마다 계속해야되나...
     public String filterWord(String msg) {
@@ -90,7 +87,6 @@ public class Letterboxservice {
 
     // mno에 해당하는 편지리스트 출력시키기
     public List<LetterboxDto> getLetterList(int mno){
-        System.out.println("mno : " +mno);
         List<LetterboxEntity> lentityList= letterboxRepository.findByMno(mno);
 
         List<LetterboxDto> ldtoList=new ArrayList<>();

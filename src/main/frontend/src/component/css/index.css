@@ -135,22 +135,18 @@ text-align: center;
 }
 
 
-
+/*------------------------------------메인페이지 -----------------------------------------*/
 .fadein{
     text-align: center;
     margin-top: 220px;
-
-}
-.fadein{
     font-size: medium;
     position: relative;
     overflow: hidden;
     animation: fadein 5s ease-in-out;
-
+}
+.fadein{
 
 }
-
-
 @keyframes fadein{
     0% {
         opacity: 0;

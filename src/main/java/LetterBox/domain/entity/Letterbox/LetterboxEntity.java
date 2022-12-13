@@ -2,7 +2,6 @@ package LetterBox.domain.entity.Letterbox;
 
 import LetterBox.domain.dto.LetterboxDto;
 import LetterBox.domain.entity.BaseEntity;
-import LetterBox.domain.entity.Category.LetterCategoryEntity;
 import LetterBox.domain.entity.member.MemberEntity;
 import lombok.*;
 
@@ -28,12 +27,6 @@ public class LetterboxEntity extends BaseEntity { // 시간상속
     @ToString.Exclude
     private MemberEntity memberEntity;
 
-    // cno -> 편지함 종류
-    @ManyToOne
-    @JoinColumn(name = "cno")
-    @ToString.Exclude
-    private LetterCategoryEntity letterCategoryEntity;
-
 
     public LetterboxDto toDto(){
         return LetterboxDto.builder()
@@ -41,7 +34,6 @@ public class LetterboxEntity extends BaseEntity { // 시간상속
                 .sendp(this.sendp)
                 .sendt(this.sendt)
                 .mno(memberEntity.getMno())
-//                .cno(letterCategoryEntity.getCno())
                 .build();
     }
 

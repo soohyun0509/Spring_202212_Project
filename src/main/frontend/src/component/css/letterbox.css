@@ -22,11 +22,11 @@
     opacity: 100;
 }
 
-.rabbit{
-    width: 22%;
-    position: absolute;
-    bottom: 20%; left:20%; transform:translateX(-50%);
+.lettersheet input{
+    color: black;
+    font-size: 20px;
 }
+
 .parmtree1{
     position: absolute;
     width: 18%;
@@ -42,23 +42,68 @@
     width: 10%;
     top: 13%; right:15%; transform:translateX(-50%);
 }
+/*------------------- 별 ------------------------------*/
+.randStar{
+    width: 4%; position: absolute; z-index: 100;
+    animation-name:randStar ;
+    animation-duration: 5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate-reverse;
+}
 
-.s1,.s2,.s3,.s4,.s5{
-    width: 4%; position: absolute;
+@keyframes randStar{
+    0%{
+        transform: rotate(0deg);
+    }
+    30%{
+        transform: rotate(90deg);
+    }
+    60%{
+        transform: rotate(180deg);
+    }
+    100%{
+        transform: rotate(270deg);
+
+    }
 }
-/*최대 크기 4 / 최소 크기 2*/
-.s1{
-    top: 13%; right:50%;
+/*
+@keyframes randStar{
+    0%{
+        opacity: 0.2;
+    }
+    30%{
+        opacity: 0.5;
+    }
+    60%{
+        opacity: 0.7;
+    }
+    100%{
+        opacity: 1;
+
+    }
 }
-.s2{
-    top: 13%; left:50%;
+*/
+/*------------------------- 토끼 움직임 ---------------------------*/
+.rabbit{
+    width: 22%; height: 500px;
+    position: absolute;
+    bottom: 20%; left:20%; transform:translateX(-50%);
+    background-size: cover;
+    animation-duration: 1s;
+    animation-name:rabbit ;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate-reverse;
 }
-.s3{
-    bottom: 13%; right:50%;
+
+@keyframes rabbit {
+    0%   {
+        background-image: url("../../img/rabbit1.png");
+    }
+
+    100%  {
+        background-image: url("../../img/rabbit2.png");
+    }
 }
-.s4{
-    bottom: 13%; left:50%;
-}
-.s5{
-     top: 30%; right:50%;
- }
+
