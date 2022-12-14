@@ -10,16 +10,29 @@
 
 /*------------------------ 작성버튼 -------------------------------*/
 
+.letterBtn{
+    width: 100%; margin-top: 10px;
+}
+.btnBox{
+    width: 10%;
+    position: absolute;
+    top: 50%; left: 50%; transform:translateX(-50%) translateY(-50%);
+    font-size: 2rem; text-align: center;
+}
+
+/*------------------------ 편지지 -------------------------------*/
+
 .lettersheet{
     width: 500px;
     height: 40vh;
     position: absolute;
     top: 30%; left:50%; transform:translateX(-50%);
     border: 1px solid black;
-    background-image: url("../../img/letter1.png");
+    background-color: #1a374d;
+/*    background-image: url("../../img/letter1.png");
     background-repeat: no-repeat;
-    background-size: cover;
-    opacity: 100;
+    background-size: cover;*/
+    opacity: 100;z-index: 300;
 }
 
 .lettersheet input{
@@ -27,6 +40,13 @@
     font-size: 20px;
 }
 
+.lettersheet button{
+    padding: 20px;
+    margin: 10px 10px 0 10px;
+}
+
+
+    /*------------------------ 배경 -------------------------------*/
 .parmtree1{
     position: absolute;
     width: 18%;
@@ -43,8 +63,12 @@
     top: 13%; right:15%; transform:translateX(-50%);
 }
 /*------------------- 별 ------------------------------*/
+.starBox{
+    position: absolute; z-index: 100;
+}
+
 .randStar{
-    width: 4%; position: absolute; z-index: 100;
+    width: 4%;
     animation-name:randStar ;
     animation-duration: 5s;
     animation-timing-function: linear;
@@ -67,28 +91,12 @@
 
     }
 }
-/*
-@keyframes randStar{
-    0%{
-        opacity: 0.2;
-    }
-    30%{
-        opacity: 0.5;
-    }
-    60%{
-        opacity: 0.7;
-    }
-    100%{
-        opacity: 1;
 
-    }
-}
-*/
 /*------------------------- 토끼 움직임 ---------------------------*/
 .rabbit{
-    width: 22%; height: 500px;
+    width: 22%; height: 45%;
     position: absolute;
-    bottom: 20%; left:20%; transform:translateX(-50%);
+    bottom: 20%; left: 5%;
     background-size: cover;
     animation-duration: 1s;
     animation-name:rabbit ;

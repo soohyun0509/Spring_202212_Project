@@ -40,7 +40,7 @@ public class MemberService implements OAuth2UserService<OAuth2UserRequest, OAuth
         System.out.println("인증 결과: " + oAuth2User.getAttributes());
         // 클라이언트명 가져오기
         String registrationId=userRequest.getClientRegistration().getRegistrationId();
-
+        System.out.println("registrationId 인증 결과: " + registrationId);
         // 유저정보 담을 객체키 만들기
         // 지금 유저정보가 담겨있는게 아니라 여기에 담을거임!!
         // 여기엔 각 회사마다 다르게 설정된 kakao_account , response 등이 담겨있음!
@@ -58,13 +58,9 @@ public class MemberService implements OAuth2UserService<OAuth2UserRequest, OAuth
 
         MemberEntity memberEntity=null;
         if(optional.isPresent()){
-                // 소셜 클라이언트는 다르지만 같은 이메일 사용할 경우!
-            if(optional.get().getMrole().equals(registrationId)){
                 memberEntity=optional.get();
-            }else{ // 이메일은 같지만 소셜 클라이언트는 다르다.
-                memberEntity=memberRepository.save(oauthDto.toEntity());
-            }
-        }else{
+
+        }else{ // 아예 레코드에 존재하지 않으면 새로 등록
             memberEntity=memberRepository.save(oauthDto.toEntity());
         }
         oauthDto.setMno(memberEntity.getMno());

@@ -71,7 +71,7 @@ public class OauthDto implements OAuth2User {
     }
     public static OauthDto ofGoogle(String registrationId , String oauth2UserInfo , Map<String ,Object> attributes){
         return OauthDto.builder()
-                .memail((String)attributes.get("login"))
+                .memail((String)attributes.get("email"))
                 .mname((String)attributes.get("name"))
                 .registrationId(registrationId)
                 .oauth2UserInfo(oauth2UserInfo)
@@ -81,7 +81,7 @@ public class OauthDto implements OAuth2User {
     public static OauthDto ofGithub(String registrationId , String oauth2UserInfo , Map<String ,Object> attributes){
         System.out.println("github attributes : " + attributes);
         return OauthDto.builder()
-                .memail((String)attributes.get("email"))
+                .memail((String)attributes.get("login"))
                 .mname((String)attributes.get("name"))
                 .registrationId(registrationId)
                 .oauth2UserInfo(oauth2UserInfo)

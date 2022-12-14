@@ -60,6 +60,7 @@ export default function LetterSheet(props){
             </div>
             <div className="sentbtnlist">
                 <button type="button" onClick={sendbtn}>작성 완료</button>
+                <button type="button" onClick={props.letterClose}>작성 취소</button>
             </div>
         </div>
     );
