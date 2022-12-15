@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import '../css/letterbox.css';
-import {useParams} from 'react-router-dom'
+import {useParams , useNavigate} from 'react-router-dom'
 import axios from "axios";
 import LetterSheet from "./LetterSheet";
 import OpenLetter from "./OpenLetter";
@@ -14,9 +14,7 @@ import s4 from "../../img/별4.png"
 import s5 from "../../img/별5.png"
 import letterBtn from "../../img/letterBtn.png"
 
-
 export default function Letterbox(props){
-
     // 별 이미지 배열
     const starimg=[s1,s2,s3,s4,s5];
 
@@ -24,28 +22,31 @@ export default function Letterbox(props){
     const [letter, setLetteropen]=useState(false);
     const [letterlist , setLetterlist]=useState([]);
 
+    const navigate=useNavigate();
+
     //받은 편지 목록 가져오기
     // mno에 해당하는 편지목록 가져오면 될듯
     const param=useParams().mno;
     let array=[] // 편지지 리스트 담을 배열
     // 페이지 생성될때 받은 편지지 목록 출력시켜야함
-    useEffect(()=>{
+    const getLetterList=()=>{
         axios.get("/letterbox/getLetterList", {params : {mno : param}})
             .then(res=>{
                 console.log(res.data)
                 setLetterlist(res.data)
             })
             .catch(err=>{console.log(err)})
-    },[])
-    const getLetterList=()=>{
-
     }
+
+
+
+    useEffect(getLetterList, []);
+
 
     // 로그인한 해당 사람이면 편지작성버튼 안뜨게 설정해야함
 
     // 받은 편지 오픈
     const [takeLetter, setTakeLetter]= useState(false);
-
 
 
     return(
@@ -66,7 +67,10 @@ export default function Letterbox(props){
                             return(
                                 <div className="starBox" style={{top: topnum, right: rigthnum} }>
                                     <p>{c.sendp}</p>
-                                    <img className="randStar" src={starimg[rand-1]} style={{width: width+"%"}} onClick={()=>{setTakeLetter(true)}}/>
+                                    <img className="randStar" src={starimg[rand-1]} style={{width: width+"%"}} onClick={()=>{
+                                        navigate("/page/openletter/"+param, {state : {letterlist : letterlist} })
+                                        }}
+                                    />
                                 </div>
 
                             );
@@ -81,10 +85,10 @@ export default function Letterbox(props){
             </div>
             <div>
             </div>
-            <div className="letter-content">
+            <div className="component-connect">
                 {letter && <LetterSheet letterClose={()=>{setLetteropen(false)}}/>}
-                {takeLetter && <OpenLetter/>}
             </div>
+
         </div>
 
     );

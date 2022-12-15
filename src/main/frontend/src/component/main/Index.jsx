@@ -7,6 +7,7 @@ import Letterbox from "../page/Letterbox";
 import {HashRouter, BrowserRouter , Routes , Route , Link, Router} from 'react-router-dom';
 import Diary from "../page/Diary";
 import Mainpage from "./Mainpage";
+import OpenLetter from "../page/OpenLetter";
 
 export default function Index(props){
     return(
@@ -19,6 +20,7 @@ export default function Index(props){
                         <Route path="/member/login" element={<Login/>}></Route>
                         <Route path="/page/letterbox/:mno" element={<Letterbox/>}></Route>
                         <Route path="/page/diary" element={<Diary/>}></Route>
+                        <Route path="/page/openletter/:mno" element={<OpenLetter/>}></Route>
                     </Routes>
                 </div>
                 <Footer/>
