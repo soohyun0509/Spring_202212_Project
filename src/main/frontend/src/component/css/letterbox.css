@@ -1,3 +1,5 @@
+
+/*---------------------------- 폰트 ---------------------------------*/
 .letterbox-content{
     max-width: 100rem;
     margin: 0 auto;
@@ -23,26 +25,64 @@
 /*------------------------ 편지지 -------------------------------*/
 
 .lettersheet{
-    width: 500px;
-    height: 40vh;
+    width: 795px;
+    height: 600px;
+/*    width: 35vw;
+    height: 54vh;*/
     position: absolute;
-    top: 30%; left:50%; transform:translateX(-50%);
-    border: 1px solid black;
-    background-color: #1a374d;
-/*    background-image: url("../../img/letter1.png");
+    top: 15%; left:50%; transform:translateX(-50%);
+    background-image: url("../../img/sheet2.png");
     background-repeat: no-repeat;
-    background-size: cover;*/
-    opacity: 100;z-index: 300;
+    background-size: cover;
+    opacity: 1;
+    z-index: 300;
 }
 
-.lettersheet input{
+.sheetContentWrap{
+    position: absolute;
+    top : 25%; left : 3.5%;
+}
+.sheetContent{
+    width: 100vw;
+
+}
+.sheetContent input, textarea{
+    background: none;
     color: black;
-    font-size: 20px;
+    outline: none;
+}
+.takep{
+    font-size: 1.5rem;
+    font-family: GangwonEdu_OTFBoldA;
+    margin-bottom: 0.5%;
 }
 
-.lettersheet button{
+.sendt{
+    padding-bottom: 1%;
+    font-family: GangwonEdu_OTFBoldA;
+    width: 32vw;
+    font-size: 1.5rem;
+    color: black;
+    resize: none;
+/*    overflow: hidden;*/
+    height: 19vh;
+
+}
+.sendt-content{
+    padding: 10px;
+}
+.sendp-content{
+}
+.sendp{
+    font-size: 1.5rem;
+    font-family: GangwonEdu_OTFBoldA;
+}
+
+.sentbtnlist button{
     padding: 20px;
+    font-size: 1rem;
     margin: 10px 10px 0 10px;
+    background-color:  rgba(66, 72, 116,0.8) ;
 }
 
 /*------------------------ 배경 -------------------------------*/

@@ -42,6 +42,8 @@ export default function Letterbox(props){
 
     useEffect(getLetterList, []);
 
+    // 받은 편지 리스트로 이동하는 메서드
+    // 본인 아니면 눌러도 변동 없게 설정해야함
 
     // 로그인한 해당 사람이면 편지작성버튼 안뜨게 설정해야함
 
@@ -77,17 +79,18 @@ export default function Letterbox(props){
                         })
                     }
                 </div>
+
                 <div className="btnBox">
                     <p>편지작성</p>
                     <img className="letterBtn" src={letterBtn} onClick={()=>{setLetteropen(true)}}/>
                 </div>
-
+                <div className="component-connect">
+                    {letter && <LetterSheet letterClose={()=>{setLetteropen(false)}}/>}
+                </div>
             </div>
             <div>
             </div>
-            <div className="component-connect">
-                {letter && <LetterSheet letterClose={()=>{setLetteropen(false)}}/>}
-            </div>
+
 
         </div>
 
