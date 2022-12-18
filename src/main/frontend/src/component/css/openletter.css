@@ -1,17 +1,15 @@
 /*------------------------ 받은 편지지 -------------------------------*/
 
 .takeLetterSheet{
-    width: 60%; height: 60%;
+    width: 795px;
+    height: 600px;
     position: absolute;
     top: 50%; left: 50%; transform: translateX(-50%) translateY(-50%);
-    background-color: white;
     color: black;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
-.slick-prev::before,
-.slick-next::before {
-    opacity: 0;
-    display: none;
-}
+
 .sendpBox{
     height: 100px;
     width: 500px;
@@ -22,13 +20,3 @@
     width: 500px;
     color: black;
 }
-/*
-!* the slides *!
-.slick-slide {
-    margin: 0 27px;
-}
-
-!* the parent *!
-.slick-list {
-    margin: 0 -27px;
-}*/

@@ -14,6 +14,7 @@ public class LetterboxDto {
     private int lno;
     private String sendp;
     private String sendt;
+    private int sno;
     private int mno;
     private int cno;
 
@@ -22,6 +23,7 @@ public class LetterboxDto {
                 .lno(this.lno)
                 .sendp(this.sendp)
                 .sendt(this.sendt)
+                .sno(this.sno)
                 .build();
     }
 

@@ -16,7 +16,6 @@ import java.util.Optional;
 
 @Service
 public class Letterboxservice {
-
     @Autowired
     private LetterboxRepository letterboxRepository;
     @Autowired
@@ -33,7 +32,7 @@ public class Letterboxservice {
             LetterboxEntity lEntity=letterboxRepository.save(lDto.toEntity());
             if(lEntity.getLno()!=0){ // 0아니면 성공
 
-                // 여기서 필터링해서 저장하기
+                // 여기서 비속어 필터링해서 저장하기
                 // 반환값 null아니면 메시지 set으로 바꿔서 db에 저장하기
                 String cleanmsg=filterWord(lDto.getSendt());
                 if(cleanmsg!=null){

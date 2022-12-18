@@ -20,6 +20,7 @@ public class LetterboxEntity extends BaseEntity { // 시간상속
     private String sendp; // 보낸 사람
     private String sendt; // 보낸 메시지
 
+    private int sno; // 편지지 이미지 번호
     // 연관관계
     // mno -> 받는 사람이 들어감!!!
     @ManyToOne
@@ -33,6 +34,7 @@ public class LetterboxEntity extends BaseEntity { // 시간상속
                 .lno(this.lno)
                 .sendp(this.sendp)
                 .sendt(this.sendt)
+                .sno(this.sno)
                 .mno(memberEntity.getMno())
                 .build();
     }

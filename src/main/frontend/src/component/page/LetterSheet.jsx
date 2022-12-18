@@ -1,26 +1,20 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import axios from "axios";
 import {useParams} from "react-router-dom";
 import sheet1 from '../../img/sheet1.png'
 import sheet2 from '../../img/sheet2.png'
 import sheet3 from '../../img/sheet3.png'
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faArrowRight} from "@fortawesome/free-solid-svg-icons";
+import {faArrowLeft} from "@fortawesome/free-solid-svg-icons";
 // 편지지 컴포넌트 생성
 export default function LetterSheet(props){
     // 편지지 배열
     const sheets=[
-        {
-            Img : '../../img/sheet1.png',
-            sno : 1
-        },
-        {
-            Img : '../../img/sheet2.png',
-            sno : 2
-        },
-        {
-            Img : '../../img/sheet3.png',
-            sno : 3
-        },
-    ]
+        {Img : sheet1,sno : 1},
+        {Img : sheet2,sno : 2},
+        {Img : sheet3,sno : 3}
+    ];
     // 편지 받는 사람 이름 가져오기
     // 이거 letterbox에서 props로 해결할 수 있을것같기도 하고...아닌것같기도하고...
     const [mname, setMname] =useState("");
@@ -42,14 +36,13 @@ export default function LetterSheet(props){
     }
     useEffect(getMname,[]);
 
-// {mname}
-
     // 편지 내용 백엔드 전송
     const sendbtn=()=>{
         let info={
             mno : param,
             sendt : document.querySelector(".sendt").value,
-            sendp : document.querySelector(".sendp").value
+            sendp : document.querySelector(".sendp").value,
+            sno : sno
         }
         axios
             .post("/letterbox/sendletter", info)
@@ -64,24 +57,46 @@ export default function LetterSheet(props){
             .catch(err=>{alert(err)})
     }
 
+    const back=useRef(null); // div 스타일 변경해주기 위해 설정!
+    const [sno, setSno]=useState(1); // 1번이 기본이미지의 sno
+    const [count, setCount]=useState(0); // 0번이 기본이미지
+    // 오른쪽 버튼 이벤트
+    const clickRight=()=>{
+        if(count<sheets.length-1){
+            // 카운트 수 변경해주고 그거에 맞춰서 배경이미지 변경해주기
+            setCount(count + 1);
+            back.current.style.backgroundImage=`url(${sheets[count].Img})`;
+        }
+    }
+    // 왼쪽 버튼 이벤트
+    const clickLeft=()=>{
+        if(count<sheets.length && count>0){
+            setCount(count - 1);
+            back.current.style.backgroundImage=`url(${sheets[count].Img})`;
+        }
+    }
+    // 카운트 숫자 바뀔때마다 sno 변경해주기
+    useEffect(()=>{setSno(sheets[count].sno)}, [count]);
+
+
     return(
         <div>
-            <div className="lettersheet">
+            <div className="lettersheet" ref={back} style={{backgroundImage : `url(${sheets[count].Img})`}}>
                 <div className="sheetContentWrap">
-                    <div className="sheetContent">
-                        <div className="takep-content">
-                            <input type="text" className="takep" placeholder={mname} disabled="disabled"/>
-                        </div>
-                        <div className="sendt-content">
-                            <textarea className="sendt" placeholder="내용 작성 부분"/>
-                        </div>
-                        <div className="sendp-content">
-                            <input type="text" className="sendp" placeholder="이름을 남겨주세요"/>
-                        </div>
-                        <div className="sentbtnlist">
-                            <button type="button" onClick={sendbtn}>작성 완료</button>
-                            <button type="button" onClick={props.letterClose}>작성 취소</button>
-                        </div>
+                    <FontAwesomeIcon icon={faArrowRight} className="arrowRight" onClick={clickRight}/>
+                    <FontAwesomeIcon icon={faArrowLeft} className="arrowLeft" onClick={clickLeft}/>
+                    <div className="takep-content">
+                        <input type="text" className="takep" placeholder={mname} disabled="disabled"/>
+                    </div>
+                    <div className="sendt-content">
+                        <textarea className="sendt" placeholder="내용 작성 부분"/>
+                    </div>
+                    <div className="sendp-content">
+                        <input type="text" className="sendp" placeholder="이름을 남겨주세요"/>
+                    </div>
+                    <div className="sentbtnlist">
+                        <button type="button" onClick={sendbtn}>작성 완료</button>
+                        <button type="button" onClick={props.letterClose}>작성 취소</button>
                     </div>
                 </div>
             </div>
