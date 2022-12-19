@@ -3,6 +3,8 @@ package LetterBox.domain.dto;
 import LetterBox.domain.entity.Letterbox.LetterboxEntity;
 import lombok.*;
 
+import java.sql.Clob;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -15,6 +17,7 @@ public class LetterboxDto {
     private String sendp;
     private String sendt;
     private int sno;
+    private String bdate;
     private int mno;
     private int cno;
 

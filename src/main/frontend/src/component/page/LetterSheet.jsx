@@ -4,6 +4,8 @@ import {useParams} from "react-router-dom";
 import sheet1 from '../../img/sheet1.png'
 import sheet2 from '../../img/sheet2.png'
 import sheet3 from '../../img/sheet3.png'
+import sheet4 from "../../img/sheet4.png"
+import sheet5 from "../../img/sheet5.png"
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faArrowRight} from "@fortawesome/free-solid-svg-icons";
 import {faArrowLeft} from "@fortawesome/free-solid-svg-icons";
@@ -13,7 +15,9 @@ export default function LetterSheet(props){
     const sheets=[
         {Img : sheet1,sno : 1},
         {Img : sheet2,sno : 2},
-        {Img : sheet3,sno : 3}
+        {Img : sheet3,sno : 3},
+        {Img : sheet4,sno : 4},
+        {Img : sheet5,sno : 5}
     ];
     // 편지 받는 사람 이름 가져오기
     // 이거 letterbox에서 props로 해결할 수 있을것같기도 하고...아닌것같기도하고...
@@ -66,6 +70,9 @@ export default function LetterSheet(props){
             // 카운트 수 변경해주고 그거에 맞춰서 배경이미지 변경해주기
             setCount(count + 1);
             back.current.style.backgroundImage=`url(${sheets[count].Img})`;
+        }else{
+            setCount(0);
+            back.current.style.backgroundImage= `url(${sheets[count].Img})`;
         }
     }
     // 왼쪽 버튼 이벤트
@@ -73,10 +80,31 @@ export default function LetterSheet(props){
         if(count<sheets.length && count>0){
             setCount(count - 1);
             back.current.style.backgroundImage=`url(${sheets[count].Img})`;
+        }else{
+            setCount(sheets.length-1);
+            back.current.style.backgroundImage= `url(${sheets[count].Img})`;
         }
     }
     // 카운트 숫자 바뀔때마다 sno 변경해주기
     useEffect(()=>{setSno(sheets[count].sno)}, [count]);
+
+
+
+    // 글자 수 제한 & 작성한 글자 알려주기
+    //onChange 써서 해야하나
+    const writeText=useRef(null);
+    const [text , setText]=useState(0);
+
+    const textLimit=()=>{
+        // onchange 될때마다 이거 불러서 계속 확인하게 해야겠다.
+
+        setText(writeText.current.value.length)
+        if(writeText.current.value.length>280) {
+            alert("더 이상 입력할 수 없습니다.")
+        }
+
+    }
+
 
 
     return(
@@ -89,7 +117,8 @@ export default function LetterSheet(props){
                         <input type="text" className="takep" placeholder={mname} disabled="disabled"/>
                     </div>
                     <div className="sendt-content">
-                        <textarea className="sendt" placeholder="내용 작성 부분"/>
+                        <textarea maxLength="280" ref={writeText} className="sendt" placeholder="전하실 내용을 적어주세요" onChange={textLimit}/>
+                        <p className="textCheck">{text}/280</p>
                     </div>
                     <div className="sendp-content">
                         <input type="text" className="sendp" placeholder="이름을 남겨주세요"/>

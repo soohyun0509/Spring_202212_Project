@@ -4,8 +4,12 @@ import LetterBox.domain.dto.LetterboxDto;
 import LetterBox.domain.entity.BaseEntity;
 import LetterBox.domain.entity.member.MemberEntity;
 import lombok.*;
+import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.DynamicInsert;
 
 import javax.persistence.*;
+import java.sql.Clob;
+
 
 @Entity
 @Table(name = "letterbox")
@@ -18,6 +22,7 @@ public class LetterboxEntity extends BaseEntity { // 시간상속
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int lno;
     private String sendp; // 보낸 사람
+    @Lob
     private String sendt; // 보낸 메시지
 
     private int sno; // 편지지 이미지 번호
@@ -36,6 +41,7 @@ public class LetterboxEntity extends BaseEntity { // 시간상속
                 .sendt(this.sendt)
                 .sno(this.sno)
                 .mno(memberEntity.getMno())
+                .bdate(this.getCdate().toLocalDate().toString())
                 .build();
     }
 

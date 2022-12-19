@@ -50,7 +50,7 @@
 }
 .takep-content{
     position: absolute;
-    top : 20%; left : 3.5%;
+    top : 23%; left : 3.5%;
 }
 .sendt-content{
     position: absolute;
@@ -82,8 +82,13 @@
     color: black;
     resize: none;
 /*    overflow: hidden;*/
-    height: 19vh;
-
+    height: 24vh;
+}
+.textCheck{
+    position: absolute;
+    color: black;
+    right: 5%;
+    font-size: 1.5rem;
 }
 
 .sendp{

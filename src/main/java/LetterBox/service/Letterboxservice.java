@@ -32,6 +32,9 @@ public class Letterboxservice {
             LetterboxEntity lEntity=letterboxRepository.save(lDto.toEntity());
             if(lEntity.getLno()!=0){ // 0아니면 성공
 
+                // 보내는 사람익명이면 넣어주기
+                if(lEntity.getSendp()==""){lEntity.setSendp("익명🤐");}
+                if(lEntity.getSendt()==""){lEntity.setSendt("편지 내용이 비어있네요. 글로는 표현이 다 안되나봐요🥰");}
                 // 여기서 비속어 필터링해서 저장하기
                 // 반환값 null아니면 메시지 set으로 바꿔서 db에 저장하기
                 String cleanmsg=filterWord(lDto.getSendt());
@@ -39,14 +42,11 @@ public class Letterboxservice {
                     lEntity.setSendt(cleanmsg);
                     System.out.println(cleanmsg);
                 }
-
                 // 회원-편지함 연관관계
                 lEntity.setMemberEntity(mEntity);
                 mEntity.getLetterboxEntityList().add(lEntity);
-
                 return true;
             }
-
         }
         return false;
     }
@@ -87,13 +87,13 @@ public class Letterboxservice {
     // mno에 해당하는 편지리스트 출력시키기
     public List<LetterboxDto> getLetterList(int mno){
         List<LetterboxEntity> lentityList= letterboxRepository.findByMno(mno);
-
         List<LetterboxDto> ldtoList=new ArrayList<>();
 
         // 하나씩 뽑아서 dto로 담자
         for(LetterboxEntity lentity : lentityList){
             ldtoList.add(lentity.toDto());
         }
+        System.out.println(ldtoList.toString());
         return ldtoList;
 
     }

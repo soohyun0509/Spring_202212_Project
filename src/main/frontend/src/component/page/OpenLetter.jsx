@@ -10,29 +10,34 @@ import {faArrowLeft} from "@fortawesome/free-solid-svg-icons";
 import sheet1 from "../../img/sheet1.png";
 import sheet2 from "../../img/sheet2.png";
 import sheet3 from "../../img/sheet3.png";
+import sheet4 from "../../img/sheet4.png"
+import sheet5 from "../../img/sheet5.png"
 export default function OpenLetter(props){
     // 편지지 배열
     const sheets=[
         {Img : sheet1,sno : 1},
         {Img : sheet2,sno : 2},
-        {Img : sheet3,sno : 3}
+        {Img : sheet3,sno : 3},
+        {Img : sheet4,sno : 4},
+        {Img : sheet5,sno : 5},
+
     ];
     // letterbox에서 편지리스트 전달받음
     const location=useLocation();
     console.log(location.state.letterlist)
 
-    // 요기에 편지지이미지랑, 등등 추가해서 넣고싶다
+    //letterbox에서 전달받기
     let list=[]
     location.state.letterlist.forEach((l)=>{
         let content={
             sendp : l.sendp,
             sendt : l.sendt,
-            sno : l.sno
+            sno : l.sno,
+            bdate : l.bdate
         }
         list.push(content)
     })
     console.log(list)
-
     const [count, setCount]=useState(0);
 
     const back=useRef();
@@ -40,10 +45,21 @@ export default function OpenLetter(props){
     const clickRight=()=>{
         if(count<list.length-1){
             setCount(count +1);
-      /*      back.current.style.backgroundImage: `url(${list[count].sno})`*/
+            back.current.style.backgroundImage= `url(${sheets[(list[count].sno)-1].Img})`;
+        }else{
+            setCount(0);
+            back.current.style.backgroundImage= `url(${sheets[(list[count].sno)-1].Img})`;
         }
     }
-
+    const clickLeft=()=>{
+        if(count>0 && count<list.length){
+            setCount(count -1);
+            back.current.style.backgroundImage= `url(${sheets[(list[count].sno)-1].Img})`;
+        }else{
+            setCount(list.length-1);
+            back.current.style.backgroundImage= `url(${sheets[(list[count].sno)-1].Img})`;
+        }
+    }
 
     return(
       <div className="wrap">
@@ -52,12 +68,13 @@ export default function OpenLetter(props){
               <img className="parmtree2" src={parmtree2}/>
               <img className="moon" src={moon}/>
               <div className="rabbit"></div>
-              <div className="takeLetterSheet" ref={back} style={{backgroundImage : `url(${sheets[(list[18].sno)-1].Img})`}}>
-                  <FontAwesomeIcon icon={faArrowRight} className="arrowRight"/>
-                  <FontAwesomeIcon icon={faArrowLeft} className="arrowLeft"/>
+              <div className="takeLetterSheet" ref={back} style={{backgroundImage : `url(${sheets[(list[count].sno)-1].Img})`}}>
+                  <FontAwesomeIcon icon={faArrowRight} className="arrowRight" onClick={clickRight}/>
+                  <FontAwesomeIcon icon={faArrowLeft} className="arrowLeft" onClick={clickLeft}/>
                   <div>
-                      <div className="sendtBox" >{list[0].sendt}</div>
-                      <div className="sendpBox" >{list[0].sendp}</div>
+                      <div dangerouslySetInnerHTML={{__html :"FROM. "+list[count].sendp}} className="sendpBox"></div>
+                      <div dangerouslySetInnerHTML={{__html :list[count].sendt}} className="sendtBox"></div>
+                      <div dangerouslySetInnerHTML={{__html :list[count].bdate}} className="senddateBox"></div>
                   </div>
 
               </div>
