@@ -28,4 +28,12 @@
     font-size: 2rem;
     color: black;
 }
+.xmark{
+    font-size: 2rem;
+    position: absolute;
+    bottom : -7%; right: 1%;
+}
+.xmark path{
+    color: #BBDED6;
+}
 

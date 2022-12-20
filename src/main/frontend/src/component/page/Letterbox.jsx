@@ -19,7 +19,9 @@ export default function Letterbox(props){
     const navigate=useNavigate();
     // 별 이미지 배열
     const starimg=[s1,s2,s3,s4,s5];
+
     const param=useParams().mno;
+    console.log(param+ " : param")
     // 로그인한 사람이랑 url의 mno이 똑같은지 파악
     // 편지지 열리게
     const [letter, setLetteropen]=useState(false);
@@ -61,14 +63,28 @@ export default function Letterbox(props){
     // 받은 편지 리스트로 이동하는 메서드
     // 본인 아니면 눌러도 변동 없게 설정해야함
     const moveLetterlist=()=>{
+
+        // 내가 설정한 날 아니면 열어볼 수 없게 설정하기
+        // 시간 설정을 어떻게 해야되지
+        // 서버시간가져와서 같은지 아닌지 체크하고 넘기면 될듯
+        // 근데 그날인지 아닌지 체크하는게 아니라 그날 이후면 다되는건데...
+        // 아 년도만 가져오면 되겠다 년도 이상이면 다 열려야되니까
+        let today=new Date();
+        let year=today.getFullYear()
         // 본인 아니면 알림창 뜨고 안열리게 조건
         // 로그인 정보 가져와야될듯
-        if(checkMno){
-            // 이동
-            navigate("/page/openletter/"+param, {state : {letterlist : letterlist} })
-        }else{
+        if(!checkMno){
             alert("편지는 본인만 열어볼 수 있습니다.");
+        }else{
+            if(year=="2022"){ // 나중에 2023으로 바꾸기!!!!!!!!!!!!
+                navigate("/page/openletter/"+param, {state : {letterlist : letterlist} })
+            }else{
+                alert("2023년을 기다려주세요!");
+            }
         }
+
+
+
     }
     return(
         <div className="wrap">
@@ -80,15 +96,15 @@ export default function Letterbox(props){
                 <div className="letterstar">
                     {
                         letterlist.map((c)=>{
-                            // 1부터 5까지 랜덤 수 발동시켜서 src 넣어주기 랜덤을 별뽑힐 수 있게 위치는 일단 ...
+                            // 1부터 5까지 랜덤 수 발동시켜서 src 넣어주기 랜덤으로 별뽑힐 수 있게 위치는 일단 ...
                             let rand=Math.floor((Math.random()*5)+1)
                             let topnum=Math.floor((Math.random()*700)+100)
                             let rigthnum=Math.floor((Math.random()*1400)+200)
-                            let width=Math.floor((Math.random()*35)+20)
+                            let width=Math.floor((Math.random()*3)+1)
                             return(
                                 <div className="starBox" style={{top: topnum, right: rigthnum} }>
                                     <p>{c.sendp}</p>
-                                    <img className="randStar" src={starimg[rand-1]} style={{width: width+"%"}} onClick={moveLetterlist}/>
+                                    <img className="randStar" src={starimg[rand-1]} style={{width: width+"vw"}} onClick={moveLetterlist}/>
                                 </div>
 
                             );

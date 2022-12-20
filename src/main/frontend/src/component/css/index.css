@@ -38,42 +38,25 @@ body{
 }
 
 /*-------------------------- 헤더 -------------------------------------*/
-
-.headerLogo{
-    flex-basis: 100%;
-    text-align: center;
-}
 .headerContent{
-    display: flex;
-   /* max-width: 41.667rem; */
-    flex-flow: row nowrap;
-    align-items: center;
-    top: 0; left: 0;
     margin: 35px 0;
     font-size: 20px;
     font-family: 'Humanbumsuk';
 }
-.menuRight{
-    flex-basis: 100%;
+
+.login-box{
     text-align: center;
+    letter-spacing: 0.2rem;
+}
+
+.logout-box{
+    text-align: right;
+    margin-right: 50px;
 }
 .menuCenter{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    flex-basis: 100%;
     text-align: center;
-    letter-spacing: .2em;
-    color: white;
-}
-.menuCenter li{
-    padding-right: 30px;
-}
-.login-link{
-    position: relative;
-    letter-spacing: .4em;
-
+    margin-top: 20px;
+    letter-spacing: 0.3rem;
 }
 
 /*-------------------------- 푸터 -------------------------------------*/
@@ -86,7 +69,6 @@ body{
 }
 .footer-content{
     padding: 35px 20px 20px 20px;
-
     display: flex;
     flex-flow: row nowrap;
     align-items: center;

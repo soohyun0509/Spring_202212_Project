@@ -7,6 +7,7 @@ import {useParams, useLocation} from "react-router-dom";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faArrowRight} from "@fortawesome/free-solid-svg-icons";
 import {faArrowLeft} from "@fortawesome/free-solid-svg-icons";
+import {faXmark} from "@fortawesome/free-solid-svg-icons";
 import sheet1 from "../../img/sheet1.png";
 import sheet2 from "../../img/sheet2.png";
 import sheet3 from "../../img/sheet3.png";
@@ -61,6 +62,7 @@ export default function OpenLetter(props){
         }
     }
 
+
     return(
       <div className="wrap">
           <div className="letterbox-content">
@@ -71,6 +73,7 @@ export default function OpenLetter(props){
               <div className="takeLetterSheet" ref={back} style={{backgroundImage : `url(${sheets[(list[count].sno)-1].Img})`}}>
                   <FontAwesomeIcon icon={faArrowRight} className="arrowRight" onClick={clickRight}/>
                   <FontAwesomeIcon icon={faArrowLeft} className="arrowLeft" onClick={clickLeft}/>
+                  <FontAwesomeIcon icon={faXmark} className="xmark" onClick={()=>{window.location.href="/"}}/>
                   <div>
                       <div dangerouslySetInnerHTML={{__html :"FROM. "+list[count].sendp}} className="sendpBox"></div>
                       <div dangerouslySetInnerHTML={{__html :list[count].sendt}} className="sendtBox"></div>

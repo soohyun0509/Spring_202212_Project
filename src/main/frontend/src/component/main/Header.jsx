@@ -14,8 +14,6 @@ export default function Header(props){
     const[mno ,setMno]=useState(null); // 회원번호 넣을 변수
 
     // params
-    const params=useParams().mno;
-    console.log(params)
 
     //useEffect로 안하고 useState써서 가지고 오니까 계속 contollrer들어가서 콘솔 난리남
     useEffect(()=>{
@@ -35,20 +33,17 @@ export default function Header(props){
 
     return (
         <div className="headerContent">
-            <div className="headerLogo">
-            </div>
-            <div className="menuCenter">
-                <ul>
-                    <li><Link to={`/page/letterbox/${mno}`}>연하장</Link></li>
-                    <li><Link to="/page/diary">1년뒤 개봉</Link></li>
-                </ul>
-            </div>
-            <div className="menuRight">
                 {
                     login===true ? (
-                        <div className="login-box">
-                            <span>{mname}님 반갑습니다.</span>
-                            <a href="/member/logout">로그아웃</a>
+                        <div className="menuContent">
+                            <div className="menuCenter">
+                                <ul>
+                                    <li><Link to={`/page/letterbox/${mno}`}>{mname}님 연하장</Link></li>
+                                </ul>
+                            </div>
+                            <div className="logout-box">
+                                <a href="/member/logout">로그아웃</a>
+                            </div>
                         </div>
                     ):(
                     <div className="login-box">
@@ -56,8 +51,6 @@ export default function Header(props){
                     </div>
                     )
                 }
-
-            </div>
         </div>
     ); //return end
 }// component end

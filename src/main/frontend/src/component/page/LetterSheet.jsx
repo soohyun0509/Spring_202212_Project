@@ -88,24 +88,21 @@ export default function LetterSheet(props){
     // 카운트 숫자 바뀔때마다 sno 변경해주기
     useEffect(()=>{setSno(sheets[count].sno)}, [count]);
 
-
-
     // 글자 수 제한 & 작성한 글자 알려주기
     //onChange 써서 해야하나
     const writeText=useRef(null);
+    const textCheck=useRef(null)
     const [text , setText]=useState(0);
 
     const textLimit=()=>{
         // onchange 될때마다 이거 불러서 계속 확인하게 해야겠다.
 
         setText(writeText.current.value.length)
-        if(writeText.current.value.length>280) {
-            alert("더 이상 입력할 수 없습니다.")
-        }
-
+        if(writeText.current.value.length>=280) {
+            textCheck.current.style.color='red';
+            // 글자 수 줄어들면 다시 색깔바꿔주기
+        }else{textCheck.current.style.color='black';}
     }
-
-
 
     return(
         <div>
@@ -113,12 +110,13 @@ export default function LetterSheet(props){
                 <div className="sheetContentWrap">
                     <FontAwesomeIcon icon={faArrowRight} className="arrowRight" onClick={clickRight}/>
                     <FontAwesomeIcon icon={faArrowLeft} className="arrowLeft" onClick={clickLeft}/>
+
                     <div className="takep-content">
                         <input type="text" className="takep" placeholder={mname} disabled="disabled"/>
                     </div>
                     <div className="sendt-content">
-                        <textarea maxLength="280" ref={writeText} className="sendt" placeholder="전하실 내용을 적어주세요" onChange={textLimit}/>
-                        <p className="textCheck">{text}/280</p>
+                        <textarea maxLength="279" ref={writeText} className="sendt" placeholder="전하실 내용을 적어주세요" onChange={textLimit}/>
+                        <p ref={textCheck} className="textCheck">{text}/280</p>
                     </div>
                     <div className="sendp-content">
                         <input type="text" className="sendp" placeholder="이름을 남겨주세요"/>

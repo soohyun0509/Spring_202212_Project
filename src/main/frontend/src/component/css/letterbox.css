@@ -134,6 +134,10 @@
     top: 13%; right:15%; transform:translateX(-50%);
 }
 /*------------------- 별 ------------------------------*/
+.letterstar{
+    position: relative;
+}
+
 .starBox{
     position: absolute; z-index: 100;
 }
@@ -185,4 +189,3 @@
         background-image: url("../../img/rabbit2.png");
     }
 }
-
