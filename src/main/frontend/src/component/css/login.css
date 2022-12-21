@@ -2,10 +2,7 @@
     margin: 0 auto;
     max-width: 41.667rem;
 }
-.welcometext{
-    text-align: center;
-    font-size: 2.2rem;
-}
+.welcometext{text-align: center;}
 .text1{ font-size: 1.8rem;  margin-bottom: 20px;}
 .text2{ font-size: 2.5rem;}
 /*로그인 연결*/
@@ -48,4 +45,18 @@
 button{
     background-color: rgba(220, 214, 247,0.8);
     border-radius: 10px;
+}
+
+
+/*--------------------------- 미디어 쿼리 --------------------------------------------*/
+@media (max-width: 450px) {
+    .loginContainer{
+        width: 330px;
+    }
+    .loginText{
+        font-size: 1rem;
+    }
+    .welcometext p{
+        font-size: 2rem;
+    }
 }

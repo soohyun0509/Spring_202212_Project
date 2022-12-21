@@ -105,7 +105,7 @@ export default function LetterSheet(props){
     }
 
     return(
-        <div>
+        <div className="lettersheetbox">
             <div className="lettersheet" ref={back} style={{backgroundImage : `url(${sheets[count].Img})`}}>
                 <div className="sheetContentWrap">
                     <FontAwesomeIcon icon={faArrowRight} className="arrowRight" onClick={clickRight}/>

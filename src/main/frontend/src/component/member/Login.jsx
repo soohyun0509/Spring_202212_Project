@@ -2,10 +2,7 @@ import React from "react";
 import '../css/login.css'
 
 
-//이미지
-import kakao from '../../img/kakaotalk_sharing_btn_small.png'
-
-function Login(props){
+export default function Login(props){
     return(
         <div className="wrap">
             <div className="loginContent">
@@ -60,6 +57,4 @@ function Login(props){
 
 
 }// c end
-
-export default Login;
 

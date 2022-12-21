@@ -13,8 +13,13 @@ import s3 from "../../img/별3-1.png"
 import s4 from "../../img/별4.png"
 import s5 from "../../img/별5.png"
 import letterBtn from "../../img/letterBtn.png"
+import MediaQuery, {useMediaQuery} from "react-responsive";
 
 export default function Letterbox(props){
+
+    //미디어 쿼리
+    const onlyLetter=useMediaQuery({query : '(maxWidth : 1070px)'})
+
     // 리스트 같이 이동시키기 위한 훅
     const navigate=useNavigate();
     // 별 이미지 배열
@@ -84,25 +89,27 @@ export default function Letterbox(props){
         }
 
 
-
     }
     return(
         <div className="wrap">
             <div className="letterbox-content">
+                <MediaQuery minWidth={1070}>
                 <img className="parmtree1" src={parmtree1}/>
                 <img className="parmtree2" src={parmtree2}/>
-                <img className="moon" src={moon}/>
                 <div className="rabbit"></div>
+                </MediaQuery>
+                <img className="moon" src={moon}/>
                 <div className="letterstar">
                     {
                         letterlist.map((c)=>{
                             // 1부터 5까지 랜덤 수 발동시켜서 src 넣어주기 랜덤으로 별뽑힐 수 있게 위치는 일단 ...
                             let rand=Math.floor((Math.random()*5)+1)
-                            let topnum=Math.floor((Math.random()*700)+100)
-                            let rigthnum=Math.floor((Math.random()*1400)+200)
-                            let width=Math.floor((Math.random()*3)+1)
+                            let topnum=Math.floor((Math.random()*70)+10)
+                            let rigthnum=Math.floor((Math.random()*70)+20)
+                            let width=(Math.random()*2)+1
+                            console.log(width);
                             return(
-                                <div className="starBox" style={{top: topnum, right: rigthnum} }>
+                                <div className="starBox" style={{top: topnum+"%", right: rigthnum+"%"} }>
                                     <p>{c.sendp}</p>
                                     <img className="randStar" src={starimg[rand-1]} style={{width: width+"vw"}} onClick={moveLetterlist}/>
                                 </div>
@@ -112,22 +119,16 @@ export default function Letterbox(props){
                     }
                 </div>
 
-                { !checkMno &&
-                    <div className="btnBox">
+            { !checkMno &&
+                <div className="btnBox">
                     <p>편지작성</p>
-                    <img className="letterBtn" src={letterBtn} onClick={() => {
-                        setLetteropen(true)
-                    }}/>
-                </div>
-                }
+                    <img className="letterBtn" src={letterBtn} onClick={() => { setLetteropen(true)  }}/>
+                 </div>
+            }
                 <div className="component-connect">
                     {letter && <LetterSheet letterClose={()=>{setLetteropen(false)}}/>}
                 </div>
             </div>
-            <div>
-            </div>
-
-
         </div>
 
     );

@@ -1,9 +1,10 @@
 
 /*---------------------------- 폰트 ---------------------------------*/
 .letterbox-content{
-    max-width: 100rem;
+  /*  max-width: 100rem; */
     margin: 0 auto;
     height: 85vh;
+    position: relative; /* 추가 */
 }
 .letterbox-title{
     text-align: center;
@@ -12,26 +13,28 @@
 
 /*------------------------ 작성버튼 -------------------------------*/
 
-.letterBtn{
-    width: 100%; margin-top: 10px;
-}
+
 .btnBox{
     width: 10%;
     position: absolute;
     top: 50%; left: 50%; transform:translateX(-50%) translateY(-50%);
     font-size: 2rem; text-align: center;
 }
+.btnBox p{
+    font-size: 50px;
+}
+.letterBtn{
+    width: 100%; margin-top: 10px;
+}
 
 /*------------------------ 편지지 -------------------------------*/
-
 .lettersheet{
     width: 795px;
     height: 600px;
 /*    width: 35vw;
     height: 54vh;*/
     position: absolute;
-    top: 15%; left:50%; transform:translateX(-50%);
-    /*background-image: url("../../img/sheet3.png");*/
+    top: 50%; left:50%; transform:translateX(-50%) translateY(-50%);
     background-repeat: no-repeat;
     background-size: cover;
     opacity: 1;
@@ -81,7 +84,6 @@
     font-size: 1.5rem;
     color: black;
     resize: none;
-/*    overflow: hidden;*/
     height: 24vh;
 }
 .textCheck{
@@ -107,12 +109,15 @@
 }
 
 .arrowRight{
-    font-size: 2rem;
+    font-size: 2.7rem;
     position: absolute;
     bottom : 50%; right : -6%;
 }
+.arrowRight path, .arrowLeft path{
+    color : #FFB6B9                 ;
+}
 .arrowLeft{
-    font-size: 2rem;
+    font-size: 2.7rem;
     position: absolute;
     bottom : 50%; left : -6%;
     color: black;
@@ -131,17 +136,21 @@
 .moon{
     position: absolute;
     width: 10%;
-    top: 13%; right:15%; transform:translateX(-50%);
+    top: 3%; right:9%; transform:translateX(-50%);
 }
 /*------------------- 별 ------------------------------*/
 .letterstar{
     position: relative;
+    height: 100vh;  /* 추가 */
+    width: 100vw;  /* 추가 */
 }
 
 .starBox{
     position: absolute; z-index: 100;
 }
-
+.starBox p{
+    font-size: 19px;
+}
 .randStar{
     width: 4%;
     animation-name:randStar ;
@@ -169,10 +178,10 @@
 
 /*------------------------- 토끼 움직임 ---------------------------*/
 .rabbit{
-    width: 22%; height: 45%;
+    width: 22%; height: 65%;
     position: absolute;
-    bottom: 20%; left: 5%;
-    background-size: cover;
+    bottom: 5%; left: 5%;
+    background-size: 100% 100%;
     animation-duration: 1s;
     animation-name:rabbit ;
     animation-timing-function: linear;
@@ -184,8 +193,33 @@
     0%   {
         background-image: url("../../img/rabbit1.png");
     }
-
+/*    25%   {
+        background-image: url("../../img/rabbit2.png");
+    }
+    50%   {
+        background-image: url("../../img/rabbit1.png");
+    }
+    75%   {
+        background-image: url("../../img/rabbit2.png");
+    }*/
     100%  {
         background-image: url("../../img/rabbit2.png");
+    }
+}
+
+/*-------------------------------- 미디어 쿼리 --------------------------------------------*/
+@media (max-width: 1069px) {
+    .moon{
+        width: 20%;
+        top : -5%; right : 1%
+    }
+    .btnBox{
+        width: 30%;
+    }
+}
+@media (max-width: 915px) {
+    .lettersheet{
+        width: 300px;
+        height: 700px;
     }
 }
