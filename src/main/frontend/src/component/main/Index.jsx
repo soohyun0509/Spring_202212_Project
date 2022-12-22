@@ -7,7 +7,6 @@ import {HashRouter, BrowserRouter , Routes , Route , Link, Router} from 'react-r
 import Diary from "../page/Diary";
 import Mainpage from "./Mainpage";
 import OpenLetter from "../page/OpenLetter";
-import SmallMainPage from "./SmallMainPage";
 import MediaQuery, {useMediaQuery} from "react-responsive";
 export default function Index(props){
 

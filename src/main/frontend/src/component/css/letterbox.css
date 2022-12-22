@@ -3,7 +3,7 @@
 .letterbox-content{
   /*  max-width: 100rem; */
     margin: 0 auto;
-    height: 85vh;
+    height: 86vh;
     position: relative; /* 추가 */
 }
 .letterbox-title{
@@ -21,7 +21,7 @@
     font-size: 2rem; text-align: center;
 }
 .btnBox p{
-    font-size: 50px;
+    font-size: 40px;
 }
 .letterBtn{
     width: 100%; margin-top: 10px;
@@ -106,6 +106,8 @@
     font-size: 1rem;
     margin: 10px 10px 0 10px;
     background-color:  rgba(66, 72, 116,0.8) ;
+    font-family: 'bitbit';
+    letter-spacing: 2px;
 }
 
 .arrowRight{
@@ -206,7 +208,105 @@
         background-image: url("../../img/rabbit2.png");
     }
 }
+/*------------------------------- 반응형 편지 작성 페이지 -----------------------------------*/
+.resLetterSheetContent{
+    width: 100vw;
+    height: 85vh;
+    position: absolute;
+    top: 50%; left:50%; transform:translateX(-50%) translateY(-50%);
+}
+.imgContainer{
+    position: relative;
+    width: 100vw;
+    height: 85vh;
+    background: linear-gradient(#F4EEFF, #DCD6F7);
+}
+.imgList1,.imgList2, .imgList3,
+.imgList4, .imgList5{
+    position: absolute;
+    width: 32vw;
+}
+.imgList{
+    margin: 0 auto;
+}
+.sheetImg{
+    width:100%
+}
+.imgList1{top: 6%;right: 8%;}
+.imgList2{top: 6%;left: 8%;}
+.imgList3{top: 36%;right: 8%;}
+.imgList4{top: 36%;left: 8%;}
+.imgList5{top: 67%;right: 32%;}
 
+.sheetInfo{
+    padding-top: 7px;
+    text-align: center;
+    font-size: 1.7rem;
+}
+.sheetInfo p{
+    color: black;
+}
+.selectNext{
+    position: absolute;
+    bottom: 15%;
+    right: 8%;
+}
+.selectNext button{
+    background-color: rgba(66, 72, 116,0.8);
+    padding: 20px;
+    font-size: 1.5rem;
+    letter-spacing: 3px;
+    font-family: 'bitbit';
+}
+
+
+.resTakepC{
+
+    top : 10%;
+    border: 2px solid  rgba(97, 192, 191,0.5);
+
+}
+.resTakep{
+    margin: 2px;
+    border: 2px solid rgba(187, 222, 214,0.6);
+    background: transparent;
+}
+.resSendtC{
+    top : 17%;
+    border: 2px solid  rgba(97, 192, 191,0.5);
+    padding: 5px 8px 0 5px;
+    width: 90%;
+    height: 48vh;
+}
+.resSendt{
+    height: 42vh;
+    border: 2px solid rgba(187, 222, 214,0.6);
+}
+
+.resSendpC{
+    bottom: 18%;
+    border: 2px solid  rgba(97, 192, 191,0.8);
+    outline: none
+}
+.resSendp{
+    margin: 2px;
+    background: transparent;
+    border: 2px solid rgba(187, 222, 214,0.6);
+    color: black;
+}
+.resSendp:focus{
+    outline: none;
+}
+.resBtnList{
+    display: flex;
+}
+.resBtnList button{
+    padding: 15px;
+    background: linear-gradient(#BBDED6 , #61C0BF);
+    font-family: 'bitbit';
+    font-size: 1.3rem;
+    color: black;
+}
 /*-------------------------------- 미디어 쿼리 --------------------------------------------*/
 @media (max-width: 1069px) {
     .moon{
@@ -216,10 +316,53 @@
     .btnBox{
         width: 30%;
     }
+
 }
 @media (max-width: 915px) {
+
     .lettersheet{
         width: 300px;
         height: 700px;
     }
+    .starBox p{
+        font-size: 15px;
+    }
+
 }
+@media (max-width: 630px) {
+    .imgList1,.imgList2, .imgList3,
+    .imgList4, .imgList5{
+        width: 40vw;
+    }
+    .imgList1{top: 6%;right: 8%;}
+    .imgList2{top: 6%;left: 8%;}
+    .imgList3{top: 31%;right: 8%;}
+    .imgList4{top: 31%;left: 8%;}
+    .imgList5{top: 58%;right: 32%;}
+}
+@media (max-width: 490px) {
+    .resBtnList button{
+        padding: 15px;
+        font-size: 1.1rem;
+    }
+    .resBtnList{
+        left: 30%;
+        bottom: 4%;
+    }
+}
+
+
+/*
+@media (max-width: 400px) {
+    .imgContainer{
+        display: flex;
+
+    }
+!*    .imgList1{j}
+    .imgList2{top: 6%;left: 8%;}
+    .imgList3{top: 31%;right: 8%;}
+    .imgList4{top: 31%;left: 8%;}
+    .imgList5{top: 58%;right: 32%;}*!
+}
+
+*/

@@ -2,12 +2,7 @@
 /*-------------------------- 글꼴  -------------------------------------*/
 @import url('https://fonts.googleapis.com/css2?family=Nerko+One&display=swap');
 /*font-family: 'Nerko One', cursive;*/
-@font-face {
-    font-family: 'FlowerSalt';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2210-2@1.0/FlowerSalt.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal;
-}
+
 @font-face {
     font-family: 'GangwonEdu_OTFBoldA';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEdu_OTFBoldA.woff') format('woff');
@@ -20,12 +15,15 @@
     font-weight: normal;
     font-style: normal;
 }
-
 @font-face {
-    font-family: 'SANGJUGyeongcheonIsland';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2112@1.0/SANGJUGyeongcheonIsland.woff') format('woff');
+    font-family: 'NanumSquareNeo-Variable';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
+}
+@font-face{
+    font-family:'bitbit';
+    src:url('//cdn.df.nexon.com/img/common/font/DNFBitBit-Regular.woff'),url('//cdn.df.nexon.com/img/common/font/DNFBitBit-Regular.woff2') ;
 }
 /*-------------------------- 전체 설정 -------------------------------------*/
 *{margin: 0; padding: 0; border: none; color: white; }

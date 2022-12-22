@@ -13,10 +13,27 @@ import s3 from "../../img/별3-1.png"
 import s4 from "../../img/별4.png"
 import s5 from "../../img/별5.png"
 import letterBtn from "../../img/letterBtn.png"
+
+
+import LetterBoxBack from "./LetterBoxBack";
+import ResLetterBoxBack from "../responsive/ResLetterBoxBack";
+import ResLetterSheet from "../responsive/ResLetterSheet"
 import MediaQuery, {useMediaQuery} from "react-responsive";
+import sheet1 from "../../img/sheet1.png";
+import sheet2 from "../../img/sheet2.png";
+import sheet3 from "../../img/sheet3.png";
+import sheet4 from "../../img/sheet4.png";
+import sheet5 from "../../img/sheet5.png";
 
 export default function Letterbox(props){
-
+    // 편지지 배열
+    const sheets=[
+        {Img : sheet1,sno : 1},
+        {Img : sheet2,sno : 2},
+        {Img : sheet3,sno : 3},
+        {Img : sheet4,sno : 4},
+        {Img : sheet5,sno : 5}
+    ];
     //미디어 쿼리
     const onlyLetter=useMediaQuery({query : '(maxWidth : 1070px)'})
 
@@ -29,7 +46,7 @@ export default function Letterbox(props){
     console.log(param+ " : param")
     // 로그인한 사람이랑 url의 mno이 똑같은지 파악
     // 편지지 열리게
-    const [letter, setLetteropen]=useState(false);
+    const [letteropen, setLetteropen]=useState(false);
     const [letterlist , setLetterlist]=useState([]);
 
     // 현재 로그인한 사람과 링크의 mno이 같은 사람인지
@@ -65,6 +82,22 @@ export default function Letterbox(props){
             .catch(err=>{console.log(err)})
     },[])
 
+    // 편지 받는 사람 이름 가져오기
+    // 이거 letterbox에서 props로 해결할 수 있을것같기도 하고...아닌것같기도하고...
+    const [mname, setMname] =useState("");
+    // 편지지에 출력시킬 mname 가져오기
+    // 링크에서 mno뽑아가지고 mname 가져오면 될듯!
+    const getMname=()=>{
+        axios.get("/member/getMname" , {params : {mno : param}})
+            .then(res=>{
+                console.log(res.data);
+                if(res.data!=""){ // null이 아니면 이름이랑 넣어주기
+                    setMname("To . "+res.data)
+                }
+            })
+            .catch(err=>{console.log(err)})
+    }
+    useEffect(getMname,[]);
     // 받은 편지 리스트로 이동하는 메서드
     // 본인 아니면 눌러도 변동 없게 설정해야함
     const moveLetterlist=()=>{
@@ -90,35 +123,16 @@ export default function Letterbox(props){
 
 
     }
+
     return(
         <div className="wrap">
             <div className="letterbox-content">
                 <MediaQuery minWidth={1070}>
-                <img className="parmtree1" src={parmtree1}/>
-                <img className="parmtree2" src={parmtree2}/>
-                <div className="rabbit"></div>
+                    <LetterBoxBack letteropen={letteropen} letterlist={letterlist} starImgList={starimg} moveLetterlist={moveLetterlist}/>
                 </MediaQuery>
-                <img className="moon" src={moon}/>
-                <div className="letterstar">
-                    {
-                        letterlist.map((c)=>{
-                            // 1부터 5까지 랜덤 수 발동시켜서 src 넣어주기 랜덤으로 별뽑힐 수 있게 위치는 일단 ...
-                            let rand=Math.floor((Math.random()*5)+1)
-                            let topnum=Math.floor((Math.random()*70)+10)
-                            let rigthnum=Math.floor((Math.random()*70)+20)
-                            let width=(Math.random()*2)+1
-                            console.log(width);
-                            return(
-                                <div className="starBox" style={{top: topnum+"%", right: rigthnum+"%"} }>
-                                    <p>{c.sendp}</p>
-                                    <img className="randStar" src={starimg[rand-1]} style={{width: width+"vw"}} onClick={moveLetterlist}/>
-                                </div>
-
-                            );
-                        })
-                    }
-                </div>
-
+                <MediaQuery maxWidth={1069}>
+                    <ResLetterBoxBack letteropen={letteropen} letterlist={letterlist} starImgList={starimg} moveLetterlist={moveLetterlist}/>
+                </MediaQuery>
             { !checkMno &&
                 <div className="btnBox">
                     <p>편지작성</p>
@@ -126,15 +140,19 @@ export default function Letterbox(props){
                  </div>
             }
                 <div className="component-connect">
-                    {letter && <LetterSheet letterClose={()=>{setLetteropen(false)}}/>}
+                    {letteropen &&
+                        <MediaQuery minWidth={916}>
+                            <LetterSheet param={param} sheets={sheets} mname={mname} letterClose={()=>{setLetteropen(false)}}/>
+                        </MediaQuery>
+                     }
+                    {letteropen &&
+                        <MediaQuery maxWidth={915}>
+                            <ResLetterSheet param={param} sheets={sheets} mname={mname} letterClose={()=>{setLetteropen(false)}}  />
+                        </MediaQuery>
+                    }
                 </div>
             </div>
         </div>
 
     );
 }
-
-
-/*
-
-*/
