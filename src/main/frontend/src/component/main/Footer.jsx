@@ -3,8 +3,6 @@ import {defaults} from "axios";
 import Git from '../../img/github.png'
 import logo from'../../img/logo3.png'
 import {useMediaQuery} from "react-responsive";
-
-
 export default function Footer(props){
 
     const tooSmall=useMediaQuery({query : '(max-width:700px)'})
@@ -33,7 +31,6 @@ export default function Footer(props){
                     <p>별똥별</p>
                 </div>
             }
-
         </div>
     );// return end
 }// c end

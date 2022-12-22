@@ -38,7 +38,7 @@ export default function Header(props){
                         <div className="menuContent">
                             <div className="menuCenter">
                                 <ul>
-                                    <li><Link to={`/page/letterbox/${mno}`}>{mname}님 연하장</Link></li>
+                                    <li><a href={`/page/letterbox/${mno}`}>{mname}님 연하장</a></li>
                                 </ul>
                             </div>
                             <div className="logout-box">
@@ -47,7 +47,7 @@ export default function Header(props){
                         </div>
                     ):(
                     <div className="login-box">
-                        <Link to="/member/login" className="login-link">로그인</Link>
+                        <a href="/member/login" className="login-link">로그인</a>
                     </div>
                     )
                 }
