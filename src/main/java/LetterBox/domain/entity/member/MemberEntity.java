@@ -3,6 +3,7 @@ package LetterBox.domain.entity.member;
 import LetterBox.domain.dto.OauthDto;
 import LetterBox.domain.entity.BaseEntity;
 import LetterBox.domain.entity.Letterbox.LetterboxEntity;
+import LetterBox.domain.entity.customer.CustomerEntity;
 import lombok.*;
 
 import javax.persistence.*;
@@ -27,6 +28,7 @@ public class MemberEntity extends BaseEntity {
     @Builder.Default
     @ToString.Exclude
     private List<LetterboxEntity> letterboxEntityList= new ArrayList<>();
+
 
 
     public OauthDto toDto(){

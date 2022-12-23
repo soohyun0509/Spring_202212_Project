@@ -13,9 +13,10 @@ export default function LetterSheet(props){
 
     // 편지 내용 백엔드 전송
     const sendbtn=()=>{
+        // 줄바꿈 처리 완료
         let info={
             mno : props.param,
-            sendt : document.querySelector(".sendt").value,
+            sendt : document.querySelector(".sendt").value.replaceAll("\n","<br/>"),
             sendp : document.querySelector(".sendp").value,
             sno : sno
         }

@@ -46,7 +46,9 @@ body{
     text-align: center;
     letter-spacing: 0.2rem;
 }
-
+.ulist li{
+    margin-left: 80px;
+}
 .logout-box{
     text-align: right;
     margin-right: 30px;

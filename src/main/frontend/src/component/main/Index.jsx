@@ -7,6 +7,8 @@ import {HashRouter, BrowserRouter , Routes , Route , Link, Router} from 'react-r
 import Diary from "../page/Diary";
 import Mainpage from "./Mainpage";
 import OpenLetter from "../page/OpenLetter";
+import Customer from "../customer/Customer"
+import WriteQpage from "../customer/WriteQpage";
 import MediaQuery, {useMediaQuery} from "react-responsive";
 export default function Index(props){
 
@@ -21,6 +23,8 @@ export default function Index(props){
                             <Route path="/member/login" element={<Login/>}></Route>
                             <Route path="/page/letterbox/:mno" element={<Letterbox/>}></Route>
                             <Route path="/page/openletter/:mno" element={<OpenLetter/>}></Route>
+                            <Route path="/customer/cmainpage" element={<Customer/>}></Route>
+                            <Route path="/customer/writeQpage" element={<WriteQpage/>}></Route>
                         </Routes>
                     </div>
                 </MediaQuery>

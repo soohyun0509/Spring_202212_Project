@@ -21,12 +21,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
                 .logoutRequestMatcher(new AntPathRequestMatcher("/member/logout"))
                 .logoutSuccessUrl("/")
                 .invalidateHttpSession(true)
-/*                .and()
+/*              .and()
                 .exceptionHandling() // 오류페이지에 대한 핸들링
-                .accessDeniedPage("/")// 해당 URL 이동*/
+                .accessDeniedPage("/")// 해당 URL 이동  */
                 .and()
                 .csrf()
                 .ignoringAntMatchers("/letterbox/sendletter")
+                .ignoringAntMatchers("/customer/setCustomer")
                 .and()
                 .oauth2Login()
                 .defaultSuccessUrl("/") // 로그인 성공시 이동 페이지

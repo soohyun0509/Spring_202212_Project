@@ -1,8 +1,6 @@
 import React, {useEffect, useState} from "react";
 import '../css/index.css'
 import axios from "axios";
-
-
 import {HashRouter, BrowserRouter, Routes, Route, Link, Router, useParams} from 'react-router-dom';
 
 
@@ -37,8 +35,9 @@ export default function Header(props){
                     login===true ? (
                         <div className="menuContent">
                             <div className="menuCenter">
-                                <ul>
+                                <ul className="ulist">
                                     <li><a href={`/page/letterbox/${mno}`}>{mname}님 연하장</a></li>
+                                    <li><a href="/member/login">문의사항</a></li>
                                 </ul>
                             </div>
                             <div className="logout-box">
@@ -46,9 +45,10 @@ export default function Header(props){
                             </div>
                         </div>
                     ):(
-                    <div className="login-box">
-                        <a href="/member/login" className="login-link">로그인</a>
-                    </div>
+                    <ul className="login-box ulist">
+                        <li><a href="/member/login" className="login-link">로그인</a></li>
+                        <li><a href="/customer/cmainpage">문의사항</a></li>
+                    </ul>
                     )
                 }
         </div>

@@ -1,0 +1,12 @@
+*{
+    border: 1px solid black;
+}
+.customer-wrap{
+    margin: 0 auto;
+    background-color: red;
+    width: 80vw;
+}
+.cTitle{
+    text-align: center;
+    padding: 10px;
+}

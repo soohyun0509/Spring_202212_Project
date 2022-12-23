@@ -34,9 +34,6 @@ export default function Letterbox(props){
         {Img : sheet4,sno : 4},
         {Img : sheet5,sno : 5}
     ];
-    //미디어 쿼리
-    const onlyLetter=useMediaQuery({query : '(maxWidth : 1070px)'})
-
     // 리스트 같이 이동시키기 위한 훅
     const navigate=useNavigate();
     // 별 이미지 배열
@@ -139,7 +136,6 @@ export default function Letterbox(props){
             <div className="letterbox-content">
                 <MediaQuery minWidth={1070}>
                     <LetterBoxBack letteropen={letteropen} letterlist={letterlist} starImgList={starimg} moveLetterlist={moveLetterlist}/>
-
                 </MediaQuery>
                 <MediaQuery maxWidth={1069}>
                     <ResLetterBoxBack letteropen={letteropen} letterlist={letterlist} starImgList={starimg} moveLetterlist={moveLetterlist}/>
