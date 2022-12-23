@@ -7,12 +7,15 @@ export default function ResLetterSheet(props){
     const[sno, setSno]=useState("");
     const selectSheet=(i)=>{
         setSno(i);
-        console.log(i)
     }
     // 편지쓰는 창 띄우기 위한 state
     const[writePage, setWritePage]=useState(false);
 
     const moveWrite=()=>{
+        if(sno==""){
+            alert("편지지를 선택해주세요");
+            return;
+        }
         setWritePage(true)
     }
     // 글자 수 제한 & 작성한 글자 알려주기
@@ -50,7 +53,6 @@ export default function ResLetterSheet(props){
             })
             .catch(err=>{alert(err)})
     }
-
 
     return(
       <div className="resLetterSheetContent">

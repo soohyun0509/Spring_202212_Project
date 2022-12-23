@@ -24,7 +24,6 @@ export default function LetterBoxBack(props){
                               let topnum=Math.floor((Math.random()*70)+10)
                               let rigthnum=Math.floor((Math.random()*70)+10)
                               let width=(Math.random()*2)+1
-                              console.log(width);
                               return(
                                   <div className="starBox" style={{top: topnum+"%", right: rigthnum+"%"} }>
                                       <p>{c.sendp}</p>

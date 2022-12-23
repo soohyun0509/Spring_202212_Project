@@ -124,20 +124,36 @@ export default function Letterbox(props){
 
     }
 
+    ///////////////////////////// 링크 복사 !!! //////////////////////////////////////////
+    const copy=()=>{
+        window.navigator.clipboard.writeText("http://localhost:8080/page/letterbox/"+param)
+            .then(()=>{alert("URL이 복사됐습니다.")})
+            .catch((e)=>{alert(e)})
+    }
+
+
+
     return(
         <div className="wrap">
+
             <div className="letterbox-content">
                 <MediaQuery minWidth={1070}>
                     <LetterBoxBack letteropen={letteropen} letterlist={letterlist} starImgList={starimg} moveLetterlist={moveLetterlist}/>
+
                 </MediaQuery>
                 <MediaQuery maxWidth={1069}>
                     <ResLetterBoxBack letteropen={letteropen} letterlist={letterlist} starImgList={starimg} moveLetterlist={moveLetterlist}/>
                 </MediaQuery>
-            { !checkMno &&
-                <div className="btnBox">
+            { !checkMno ?
+                (<div className="btnBox">
                     <p>편지작성</p>
                     <img className="letterBtn" src={letterBtn} onClick={() => { setLetteropen(true)  }}/>
-                 </div>
+                 </div>) :
+                (
+                    <div className="btnBox">
+                        <div className="copybtn" onClick={copy}>링크 복사하기🐰</div>
+                    </div>
+                )
             }
                 <div className="component-connect">
                     {letteropen &&
@@ -151,7 +167,9 @@ export default function Letterbox(props){
                         </MediaQuery>
                     }
                 </div>
+
             </div>
+
         </div>
 
     );

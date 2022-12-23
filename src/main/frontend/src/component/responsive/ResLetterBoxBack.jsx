@@ -15,7 +15,6 @@ export default function ResLetterBoxBack(props){
                                 let topnum=Math.floor((Math.random()*80)+(-1))
                                 let leftnum=Math.floor((Math.random()*70)+20)
                                 let width=(Math.random()*4)+3
-                                console.log(width);
                                 return(
                                     <div className="starBox" style={{top: topnum+"%", left: leftnum+"%"} }>
                                         <p>{c.sendp}</p>
