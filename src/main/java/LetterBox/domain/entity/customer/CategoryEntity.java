@@ -1,5 +1,6 @@
 package LetterBox.domain.entity.customer;
 
+import LetterBox.domain.dto.CategoryDto;
 import lombok.*;
 
 import javax.persistence.*;
@@ -26,6 +27,14 @@ public class CategoryEntity {
     @Builder.Default
     @ToString.Exclude
     private List<CustomerEntity> customerEntityList=new ArrayList<>();
+
+
+    public CategoryDto toDto(){
+        return CategoryDto.builder()
+                .bcno(this.bcno)
+                .bctitle(this.bctitle)
+                .build();
+    }
 
 
 

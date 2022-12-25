@@ -18,8 +18,8 @@ public class CustomerDto {
     private String bwriter;
 
     // 첨부파일 리스트
-    private List<MultipartFile> filelist; // 객체
-    private List<String> bfilename; // 첨부파일 호출용
+    private MultipartFile bfile; // 객체
+    private String bfilename; // 첨부파일 호출용
 
     private String bpassword;
     private int bview;

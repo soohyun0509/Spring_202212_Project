@@ -1,6 +1,18 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import '../css/customer.css'
+import axios from "axios";
 export default function Customer(props){
+
+
+    // 글 카테고리 출력하기
+    const[boardlist, setBoardlist]=useState([]);
+    useEffect(()=>{
+        axios.get("/customer/getBoardList")
+            .then(res=>{
+                console.log(res.data)
+            })
+            .catch(e=>console.log(e))
+    },[])
 
     return(
         <div className="wrap">
@@ -13,6 +25,9 @@ export default function Customer(props){
                         <tr>
                             <th>번호</th><th>제목</th><th>글쓴이</th><th>조회수</th><th>작성날짜</th>
                         </tr>
+                        {
+
+                        }
                     </table>
                 </div>
                 <div className="customer-bottom">

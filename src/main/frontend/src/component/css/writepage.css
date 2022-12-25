@@ -2,6 +2,69 @@
     margin: 0 auto;
     width: 80vw;
 }
-.write-content input{
+.write-content input, textarea{
     color: black;
+    font-family: "NanumSquareNeo-Variable";
+}
+.write-title{
+    margin: 20px;
+    text-align: center;
+    letter-spacing: 1rem;
+}
+.category{
+    display: flex;
+    justify-content: center;
+    margin: 15px 0;
+}
+.category button{
+    padding:13px;
+    margin-right: 2%;
+    background-color:  #424874;
+    color: white;
+    border-radius: 5px;
+}
+.formTable{
+    margin:  0 auto;
+    width: 500px;
+
+}
+.formTable input:focus{
+    outline : none;
+}
+.formTable tr , td, th{
+    border: 1px solid black;
+}
+.boardTitle{
+    padding: 10px;
+}
+.btitle, .bfile{
+    height: 22px;
+    width: 270px;
+    margin: 5px;
+    padding-left: 10px;
+}
+.bpassword, .bwriter {
+    width: 210px;
+    margin: 5px;
+    height: 22px;
+    padding-left: 7px;
+}
+.bcontent{
+    width: 550px;
+    height: 300px;
+    background-color: white;
+    margin: 20px;
+    resize: none;
+    padding: 8px;
+}
+.write-btn{
+    text-align: center;
+    margin: 20px 0 40px 0;
+}
+.write-btn button{
+    padding: 13px;
+    background-color: #424874;
+}
+button:hover{
+    cursor: pointer;
 }

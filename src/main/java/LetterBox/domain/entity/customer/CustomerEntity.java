@@ -21,15 +21,12 @@ public class CustomerEntity extends BaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int bno;
-
     private String btitle;
     private String bcontent;
     private String bwriter;
     private String bfilename;
     private String bpassword;
     private int bview;
-
-
 
     @ManyToOne
     @JoinColumn(name = "bcno")
@@ -43,7 +40,6 @@ public class CustomerEntity extends BaseEntity{
                 .btitle(this.btitle)
                 .bcontent(this.bcontent)
                 .bwriter(this.bwriter)
-             /*   .bfilename(this.bfilename)*/
                 .bpassword(this.bpassword)
                 .bview(this.bview)
                 .bcno(this.categoryEntity.getBcno())
