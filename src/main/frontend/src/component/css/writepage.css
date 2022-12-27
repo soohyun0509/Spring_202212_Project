@@ -28,9 +28,7 @@
     width: 500px;
 
 }
-.formTable input:focus{
-    outline : none;
-}
+
 .formTable tr , td, th{
     border: 1px solid black;
 }
@@ -64,7 +62,4 @@
 .write-btn button{
     padding: 13px;
     background-color: #424874;
-}
-button:hover{
-    cursor: pointer;
 }

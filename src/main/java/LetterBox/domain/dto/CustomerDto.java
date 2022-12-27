@@ -25,6 +25,8 @@ public class CustomerDto {
     private int bview;
     private int bcno;
 
+    private String bdate;
+
     public CustomerEntity toEntity(){
         return CustomerEntity.builder()
                 .bno(this.bno)

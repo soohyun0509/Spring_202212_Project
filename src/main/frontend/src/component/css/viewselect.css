@@ -1,0 +1,83 @@
+
+.view-wrap{
+    margin: 0 auto;
+    width: 60vw;    height: 112vh;
+}
+.vTitle{
+    text-align: center;
+    padding: 10px;  margin: 17px 0;
+}
+.view-content{
+    width: 31vw;
+    margin: 0 auto;
+    height: 58vh;
+    background-color: #F9F9F9;
+    border-radius: 10px;
+}
+.view-table{
+   margin: 0 auto 0 auto;
+    padding-top: 5%;
+}
+.view-table th ,td{
+    color : black;
+}
+.view-table td{width: 22vw; padding-left: 3%;}
+.table-bcontent{
+    height: 30vh;
+}
+.table-btitle , .table-bwriter{
+    height: 5vh;
+}
+.table-cell{
+    width: 5vw;
+}
+.table-btnlist{
+    width: 31vw;
+    margin-top: 3%;
+    text-align: center;
+}
+.table-btnlist button{
+    padding: 3%;
+    font-size: 1rem;
+    margin-right: 7%;
+    background-color: rgba(66, 72, 116,0.8);
+    border-radius: 7px;
+}
+.comment-wrap{
+    width: 31vw;
+    margin: 0 auto;
+    border-radius: 10px;
+}
+.comment-wrap h2{
+    padding: 2% 0 2% 5%;
+    background-color: #50577A;
+    border-radius: 10px 10px 0 0;
+    height: 2vh;
+}
+.comment-content{
+    padding-top: 2%;
+    padding-left: 3%;
+    height: 25vh;
+    background-color: #F9F9F9;
+    color: black;
+}
+.comment-input{
+    text-align: center;
+    padding: 2% 0;
+    border: 2px solid #424874;
+    margin-top: 1%;
+    border-radius: 10px;
+
+}
+.comment-input input{
+    height: 6vh; width: 19vw;
+    color: black; padding-left: 2%;
+    font-size: 0.9rem;
+}
+.comment-input button{
+    padding: 3%;
+    font-size: 1rem;
+    margin-left: 5%;
+    background-color: rgba(66, 72, 116,0.8);
+    border-radius: 10px;
+}

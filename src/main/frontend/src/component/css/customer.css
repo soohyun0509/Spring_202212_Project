@@ -1,12 +1,86 @@
-/**{
-    border: 1px solid black;
-}*/
+
 .customer-wrap{
     margin: 0 auto;
-    background-color: red;
-    width: 80vw;
+    width: 60vw;    height: 79vh;
+
 }
 .cTitle{
     text-align: center;
-    padding: 10px;
+    padding: 10px;  margin: 33px 0;
+}
+
+.category-content{
+    display: flex;
+    justify-content: center;
+    margin: 15px 0;
+}
+.category-content button{
+    padding:13px;
+    margin-right: 2%;
+    background-color:  #BFEAF5 ;
+    color: black;
+    border-radius: 5px;
+    font-weight: bold;
+}
+.customer-content{
+    width: 47vw;
+    margin: 0 auto;
+    height: 40vh;
+    position: relative;
+}
+.customer-content table{
+    letter-spacing: 0.2rem;
+}
+.customer-content table th{
+    padding: 7px 0;
+}
+.c-bno, .c-bview {width: 80px;}
+.c-btitle{width: 320px;}
+.c-bwriter, .c-bdate{width: 150px;}
+.c-btitle-content:hover{cursor: pointer}
+
+.pagination{
+    position: absolute;
+    bottom: 0;  left:26%;
+    width: 10vw;    font-size: 1.7rem;
+}
+.pagination a{
+    margin-left: 20px;
+}
+.searchBox{
+    width: 47vw;
+    margin: 0 auto; margin-top: 28px;
+}
+.key{
+    margin-right: 20px;
+    padding: 6px;
+    border-radius: 5px;
+    border: 1px solid black;
+}
+
+.keyword{
+    padding: 6px;
+    width: 200px;
+    border-radius: 5px;
+    margin-right: 12px;
+    border: 1px solid black;
+}
+.searchBtn{
+    border-radius: 5px;
+    padding : 8px; background-color: #BFEAF5;
+    color: black;
+}
+.key:focus, .keyword:focus{outline:none;}
+.searchBox select,.searchBox option, .searchBox input{
+    color: black;
+}
+.customer-bottom{
+    margin: 40px 0 10px 750px;
+
+}
+.customer-bottom button{
+    width: 110px;
+    border-radius: 5px;
+    padding : 8px; background-color: #BFEAF5;
+    color: black;
 }

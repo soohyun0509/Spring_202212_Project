@@ -3,24 +3,20 @@ import '../css/writepage.css'
 import axios from "axios";
 export default function WriteQpage(props){
 
-
-
-
     const[categoryList, setCategoryList]= useState([]);
     const[selectCate, setSelectCate]=useState("2"); // 기본 카테고리 자유게시판
 
-      // 글 작성
-      const setCustomer=()=>{
-
-          let writeForm=document.querySelector(".write-content");
-          let formdata=new FormData(writeForm);
-          formdata.set("bcno" , selectCate);
-          axios.post("/customer/setCustomer" , formdata ,{headers : {'Content-Type' : 'multipart/form-data'}})
-              .then(res=>{
-                  alert(res.data)
-              })
-              .catch(e=>alert(e))
-      }
+    // 글 작성
+    const setCustomer=()=>{
+      let writeForm=document.querySelector(".write-content");
+      let formdata=new FormData(writeForm);
+      formdata.set("bcno" , selectCate);
+      axios.post("/customer/setCustomer" , formdata ,{headers : {'Content-Type' : 'multipart/form-data'}})
+          .then(res=>{
+              alert(res.data)
+          })
+          .catch(e=>alert(e))
+    }
 
       //카테고리 리스트 가져오기
     useEffect(()=>{

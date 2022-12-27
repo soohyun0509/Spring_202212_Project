@@ -9,6 +9,7 @@ import Mainpage from "./Mainpage";
 import OpenLetter from "../page/OpenLetter";
 import Customer from "../customer/Customer"
 import WriteQpage from "../customer/WriteQpage";
+import ViewSelect from "../customer/ViewSelect";
 import MediaQuery, {useMediaQuery} from "react-responsive";
 export default function Index(props){
 
@@ -25,6 +26,7 @@ export default function Index(props){
                             <Route path="/page/openletter/:mno" element={<OpenLetter/>}></Route>
                             <Route path="/customer/cmainpage" element={<Customer/>}></Route>
                             <Route path="/customer/writeQpage" element={<WriteQpage/>}></Route>
+                            <Route path="/customer/viewSelect/:bno" element={<ViewSelect/>}></Route>
                         </Routes>
                     </div>
                 </MediaQuery>

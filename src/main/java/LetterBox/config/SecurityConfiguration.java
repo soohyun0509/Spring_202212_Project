@@ -28,6 +28,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
                 .csrf()
                 .ignoringAntMatchers("/letterbox/sendletter")
                 .ignoringAntMatchers("/customer/setCustomer")
+                .ignoringAntMatchers("/customer/getBoardList")
                 .and()
                 .oauth2Login()
                 .defaultSuccessUrl("/") // 로그인 성공시 이동 페이지

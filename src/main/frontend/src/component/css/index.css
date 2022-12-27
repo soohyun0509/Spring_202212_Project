@@ -34,7 +34,8 @@ body{
     background: linear-gradient(#3e4577, #a5abe0);
     font-family: 'Humanbumsuk'
 }
-
+input:focus{outline: none;}
+button:hover{cursor: pointer;}
 /*-------------------------- 헤더 -------------------------------------*/
 .headerContent{
     margin: 35px 0;

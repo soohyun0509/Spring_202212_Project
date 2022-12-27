@@ -6,6 +6,8 @@ import LetterBox.domain.entity.member.MemberEntity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Entity
@@ -43,6 +45,11 @@ public class CustomerEntity extends BaseEntity{
                 .bpassword(this.bpassword)
                 .bview(this.bview)
                 .bcno(this.categoryEntity.getBcno())
+                .bdate(
+                        this.getCdate().toString().equals(LocalDateTime.now().toLocalDate().toString()) ?
+                        this.getCdate().toLocalTime().format(DateTimeFormatter.ofPattern("HH : mm : ss")) :
+                        this.getCdate().toLocalDate().toString()
+                )
                 .build();
     }
 

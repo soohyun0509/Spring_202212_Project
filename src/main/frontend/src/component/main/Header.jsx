@@ -37,7 +37,7 @@ export default function Header(props){
                             <div className="menuCenter">
                                 <ul className="ulist">
                                     <li><a href={`/page/letterbox/${mno}`}>{mname}님 연하장</a></li>
-                                    <li><a href="/member/login">문의사항</a></li>
+                                    <li><a href="/customer/cmainpage">문의사항</a></li>
                                 </ul>
                             </div>
                             <div className="logout-box">

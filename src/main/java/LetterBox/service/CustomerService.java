@@ -2,11 +2,17 @@ package LetterBox.service;
 
 import LetterBox.domain.dto.CategoryDto;
 import LetterBox.domain.dto.CustomerDto;
+import LetterBox.domain.dto.PageDto;
 import LetterBox.domain.entity.customer.CategoryEntity;
 import LetterBox.domain.entity.customer.CategoryRepository;
 import LetterBox.domain.entity.customer.CustomerEntity;
 import LetterBox.domain.entity.customer.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -35,8 +41,19 @@ public class CustomerService {
 
     }
 
+    // 첨부파일 저장 경로
+
     //  링크 변경하기!!!!!!!
-    String path="C:\\Users\\user\\Desktop\\lettetbox\\src\\main\\resources\\static";
+    String path="C:\\upload\\";
+
+
+/*
+    public boolean fileUpload(CustomerDto customerDto){
+        if(!customerDto.getBfile())
+    }
+*/
+
+
 
     // 게시물 등록
     @Transactional
@@ -60,25 +77,51 @@ public class CustomerService {
     }
 
     // 게시물 출력
-    public List<CustomerDto> getBoardList(){
-        List<CustomerEntity> customerEntities=customerRepository.findAll();
+    public PageDto getBoardList(PageDto pageDto){
+        Pageable pageable= PageRequest.of(pageDto.getPage()-1 , 5, Sort.by(Sort.Direction.DESC, "bno"));
 
-        System.out.println(customerEntities.toString());
+        Page<CustomerEntity> entityPage =
+                customerRepository.findBySelect(pageDto.getBcno(), pageDto.getKey(), pageDto.getKeyword() , pageable);
+
+        int btncount=5;
+        int startbtn=(pageDto.getPage()/btncount) * btncount+1;
+        int endbtn=startbtn+btncount-1;
+
+        if(endbtn > entityPage.getTotalPages()){
+            endbtn=entityPage.getTotalPages();
+        }
+
 
         List<CustomerDto>customerDtos=new ArrayList<>();
-        for(CustomerEntity entity : customerEntities){
-            System.out.println(entity.toString());
-            System.out.println("ddddd"+entity.toDto());
-            CustomerDto customerDto=entity.toDto();
-            customerDtos.add(customerDto);
+        for(CustomerEntity entity : entityPage){
+            customerDtos.add(entity.toDto());
         }
-        System.out.println(customerDtos.toString());
-        return customerDtos;
+
+        pageDto.setList(customerDtos);
+        pageDto.setTotalBoards(entityPage.getTotalElements());
+
+        System.out.println("엔티티들 : " +entityPage);
+        System.out.println("총엔티티수 : " +entityPage.getTotalElements());
+        System.out.println("총페이지수 : " +entityPage.getTotalPages());
+        System.out.println("현재페이지수 : " +entityPage.getNumber());
+        System.out.println("현재엔티티들 객체정보 : " +entityPage.getContent());
+        System.out.println("현재 페이지의 게시물수 : " +entityPage.getNumberOfElements());
+        System.out.println("현재 페이지가 첫페이지인지 여부확인 : " +entityPage.isFirst());
+        System.out.println("현재 페이지가 마지막페이지인지 여부확인 : " +entityPage.isLast());
+
+        return pageDto;
     }
 
-
-
-
+    // 개별글 출력
+    @Transactional
+    public CustomerDto getViewSelect(int bno){
+        Optional<CustomerEntity> optional= customerRepository.findById(bno);
+        if(optional.isPresent()){
+            CustomerEntity entity=optional.get();
+            return entity.toDto();
+        }
+        return null;
+    }
 
 
 }
