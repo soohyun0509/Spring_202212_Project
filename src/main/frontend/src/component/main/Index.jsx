@@ -4,7 +4,6 @@ import Footer from './Footer'
 import Login from "../member/Login";
 import Letterbox from "../page/Letterbox";
 import {HashRouter, BrowserRouter , Routes , Route , Link, Router} from 'react-router-dom';
-import Diary from "../page/Diary";
 import Mainpage from "./Mainpage";
 import OpenLetter from "../page/OpenLetter";
 import Customer from "../customer/Customer"
