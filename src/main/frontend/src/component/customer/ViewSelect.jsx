@@ -11,11 +11,23 @@ export default function ViewSelect(props){
     useEffect(()=>{
         axios.get("/customer/getViewSelect", {params : {bno : bParam}})
             .then(res=>{
+                console.log(res.data)
                 setBoard(res.data);
             })
             .catch(e=>console.log(e))
 
     },[])
+/*    // 게시물 조회수 올리기
+    const [viewcount, setViewcount]=useState(board.bview);*/
+
+    useEffect(()=>{
+        axios.get("/customer/upViewCount", {params : {bno : bParam}})
+            .then(res=>{console.log(res.data)})
+            .catch(e=>console.log(e))
+    },[])
+
+
+
     // 댓글 등록
     // bno 이랑 댓글 내용 전달하기
     const [commentRe, setCommentRe]=useState(false) // 값 변경될때마다 댓글 새로고침할 수 있게

@@ -190,4 +190,17 @@ public class CustomerService {
         return false;
     }
 
+    // 조회수
+    @Transactional
+    public boolean upViewCount(int bno){
+        Optional<CustomerEntity> optional=customerRepository.findById(bno);
+        if(optional.isPresent()){
+            CustomerEntity customerEntity=optional.get();
+            customerEntity.setBview(+1);
+            return true;
+        }
+        return false;
+    }
+
+
 }

@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import '../css/customer.css'
 import axios from "axios";
 import Pagination from 'react-js-pagination'
+import MediaQuery from "react-responsive";
 export default function Customer(props){
 
     // 글 카테고리 출력하기
@@ -54,6 +55,7 @@ export default function Customer(props){
 
     return(
         <div className="wrap">
+            <MediaQuery minWidth={1250}>
             <div className="customer-wrap">
                 <div className="cTitle">
                     <h1>문의사항 및 공지</h1>
@@ -106,7 +108,12 @@ export default function Customer(props){
                     <a href="/customer/writeQpage"><button>작성하기</button></a>
                 </div>
             </div>
-
+            </MediaQuery>
+            <MediaQuery maxWidth={1249}>
+                <div className="onlyWeb">
+                    웹 환경에서만 이용 가능해요😥
+                </div>
+            </MediaQuery>
 
         </div>
     );

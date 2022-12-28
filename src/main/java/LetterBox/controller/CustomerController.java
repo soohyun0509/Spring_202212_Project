@@ -73,7 +73,10 @@ public class CustomerController {
         System.out.println("컨트롤러 dto : " +customerDto);
         return customerService.upBoard(customerDto);
     }
-
-
+    // 조회수
+    @GetMapping("/upViewCount")
+    public boolean upViewCount(@RequestParam("bno") int bno){
+        return customerService.upViewCount(bno);
+    }
 
 }
