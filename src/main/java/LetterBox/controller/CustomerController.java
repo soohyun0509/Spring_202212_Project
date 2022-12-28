@@ -1,6 +1,7 @@
 package LetterBox.controller;
 
 import LetterBox.domain.dto.CategoryDto;
+import LetterBox.domain.dto.CommentDto;
 import LetterBox.domain.dto.CustomerDto;
 import LetterBox.domain.dto.PageDto;
 import LetterBox.domain.entity.customer.CustomerEntity;
@@ -41,5 +42,38 @@ public class CustomerController {
     public CustomerDto getViewSelect(@RequestParam("bno") int bno){
         return customerService.getViewSelect(bno);
     }
+
+    // 댓글 등록
+    @PostMapping("/setcomment")
+    public boolean setcomment(@RequestBody CommentDto commentDto){
+        return customerService.setcomment(commentDto);
+    }
+
+    // 댓글출력
+    @GetMapping("/getcommentlist")
+    public List<CommentDto> getcommentlist(@RequestParam("bno") int bno){
+        return customerService.getcommentlist(bno);
+    }
+
+    // 게시글 삭제
+    @DeleteMapping("/onDelete")
+    public int onDelete(@RequestParam("bno") int bno ,@RequestParam("bpassword") String bpassword){
+        return customerService.checkPW(0,bno, bpassword);
+    }
+
+    // 게시글 수정 비밀번호 확인
+    @GetMapping("/onUpdate")
+    public int onUpdate(@RequestParam("type") int type, @RequestParam("bno") int bno, @RequestParam("bpassword") String bpassword){
+        return customerService.checkPW(type, bno, bpassword);
+    }
+
+    // 게시글 수정
+    @PutMapping("/upBoard")
+    public boolean upBoard(CustomerDto customerDto){
+        System.out.println("컨트롤러 dto : " +customerDto);
+        return customerService.upBoard(customerDto);
+    }
+
+
 
 }

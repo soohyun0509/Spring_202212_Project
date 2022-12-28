@@ -8,6 +8,7 @@ import lombok.*;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -34,6 +35,11 @@ public class CustomerEntity extends BaseEntity{
     @JoinColumn(name = "bcno")
     @ToString.Exclude
     private CategoryEntity categoryEntity; // bcno 연관관계
+
+    @OneToMany(mappedBy = "customerEntity" , cascade = CascadeType.REMOVE)
+    @ToString.Exclude
+    @Builder.Default
+    private List<CommentEntity> commentEntityList=new ArrayList<>();
 
 
     public CustomerDto toDto(){

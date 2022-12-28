@@ -1,12 +1,10 @@
 package LetterBox.service;
 
 import LetterBox.domain.dto.CategoryDto;
+import LetterBox.domain.dto.CommentDto;
 import LetterBox.domain.dto.CustomerDto;
 import LetterBox.domain.dto.PageDto;
-import LetterBox.domain.entity.customer.CategoryEntity;
-import LetterBox.domain.entity.customer.CategoryRepository;
-import LetterBox.domain.entity.customer.CustomerEntity;
-import LetterBox.domain.entity.customer.CustomerRepository;
+import LetterBox.domain.entity.customer.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -27,7 +25,8 @@ public class CustomerService {
     private CustomerRepository customerRepository;
     @Autowired
     private CategoryRepository categoryRepository;
-
+    @Autowired
+    private CommentRepository commentRepository;
     // 카테고리 가져오기
     public List<CategoryDto> getCategory(){
         List<CategoryEntity> categoryEntities=categoryRepository.findAll();
@@ -123,5 +122,72 @@ public class CustomerService {
         return null;
     }
 
+    // 댓글 등록
+    @Transactional
+    public boolean setcomment(CommentDto commentDto){
+        Optional<CustomerEntity> optional=customerRepository.findById(commentDto.getBno());
+        if(optional.isPresent()){
+            CustomerEntity customerEntity=optional.get();
+
+            CommentEntity commentEntity = commentRepository.save(commentDto.toEntity());
+            if (!commentEntity.equals("")){
+                commentEntity.setCustomerEntity(customerEntity);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    // 댓글 출력
+    public List<CommentDto> getcommentlist(int bno){
+        System.out.println("bno" + bno);
+        Optional<CustomerEntity> optional=customerRepository.findById(bno);
+        if(optional.isPresent()){
+            List<CommentEntity> commentEntities=commentRepository.findByBno(bno);
+
+            List<CommentDto> commentDtos=new ArrayList<>();
+            for (CommentEntity e : commentEntities){
+                commentDtos.add(e.toDto());
+            }
+            return commentDtos;
+
+
+        }
+
+        return null;
+    }
+
+
+    // 게시글 삭제
+    public int checkPW(int type, int bno, String bpassword){
+        Optional<CustomerEntity> optional=customerRepository.findById(bno);
+        if(optional.isPresent()) {
+            // 비밀번호 일치 여부 판단
+            Optional<CustomerEntity> optional2= customerRepository.findByBpassword(bno, bpassword);
+            if(optional2.isPresent()){
+                // 수정 메소드 이동
+                if(type==1){ return 4;  }
+                CustomerEntity customerEntity = optional2.get();
+                customerRepository.delete(customerEntity);
+                return 1; // 게시물 삭제 완료
+            }
+            return 2; // 비밀번호 틀림
+
+        }
+        return 3; // 게시물 없음
+    }
+
+    // 게시글 수정
+    @Transactional
+    public boolean upBoard(CustomerDto customerDto){
+        Optional<CustomerEntity> optional=customerRepository.findById(customerDto.getBno());
+        if(optional.isPresent()){
+            CustomerEntity customerEntity=optional.get();
+            customerEntity.setBtitle(customerDto.getBtitle());
+            customerEntity.setBcontent(customerDto.getBcontent());
+            return true;
+        }
+        return false;
+    }
 
 }

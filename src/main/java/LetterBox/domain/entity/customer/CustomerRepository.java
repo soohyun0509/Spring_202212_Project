@@ -22,5 +22,9 @@ public interface CustomerRepository extends JpaRepository<CustomerEntity, Intege
             "and if(:key='', true, if(:key='btitle' , btitle like %:keyword% , bcontent like %:keyword%))",nativeQuery = true)
     Page<CustomerEntity> findBySelect(@Param("bcno") int bcno, @Param("key") String key, @Param("keyword") String keyword, Pageable pageable);
 
+    @Query(value = "select * from customer where bno=:bno and bpassword=:bpassword", nativeQuery = true)
+    Optional<CustomerEntity> findByBpassword(@Param("bno") int bno , @Param("bpassword") String bpassword);
+
+
 
 }

@@ -29,6 +29,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
                 .ignoringAntMatchers("/letterbox/sendletter")
                 .ignoringAntMatchers("/customer/setCustomer")
                 .ignoringAntMatchers("/customer/getBoardList")
+                .ignoringAntMatchers("/customer/setcomment")
+                .ignoringAntMatchers("/customer/onDelete")
+                .ignoringAntMatchers("/customer/upBoard")
                 .and()
                 .oauth2Login()
                 .defaultSuccessUrl("/") // 로그인 성공시 이동 페이지

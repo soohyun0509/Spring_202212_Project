@@ -36,12 +36,24 @@
     margin-top: 3%;
     text-align: center;
 }
-.table-btnlist button{
+.upBtn, .delBtn{
     padding: 3%;
     font-size: 1rem;
     margin-right: 7%;
     background-color: rgba(66, 72, 116,0.8);
     border-radius: 7px;
+}
+.checkBtn{
+    padding: 1.5%;
+    font-size: 0.7rem;
+    background-color: rgba(66, 72, 116,0.8);
+    border-radius: 7px;
+}
+.delinput{
+    border: 1px solid black;
+    height: 25px;
+    color: black;
+    margin-right: 2%;
 }
 .comment-wrap{
     width: 31vw;
@@ -60,6 +72,13 @@
     height: 25vh;
     background-color: #F9F9F9;
     color: black;
+    overflow: auto;
+}
+.comment-content div{
+    color: black;
+    padding-bottom: 1.5%;
+    padding-top: 0.5%;
+    border-bottom: 1px dotted gray;
 }
 .comment-input{
     text-align: center;
