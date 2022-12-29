@@ -13,6 +13,7 @@ import sheet2 from "../../img/sheet2.png";
 import sheet3 from "../../img/sheet3.png";
 import sheet4 from "../../img/sheet4.png"
 import sheet5 from "../../img/sheet5.png"
+import MediaQuery from "react-responsive";
 export default function OpenLetter(props){
     // 편지지 배열
     const sheets=[
@@ -65,6 +66,7 @@ export default function OpenLetter(props){
 
     return(
       <div className="wrap">
+          <MediaQuery minWidth={901}>
           <div className="letterbox-content">
               <img className="parmtree1" src={parmtree1}/>
               <img className="parmtree2" src={parmtree2}/>
@@ -81,8 +83,13 @@ export default function OpenLetter(props){
                   </div>
 
               </div>
-
           </div>
+          </MediaQuery>
+          <MediaQuery maxWidth={900}>
+              <div className="onlyWeb">
+                  웹 환경에서만 이용 가능해요😥
+              </div>
+          </MediaQuery>
       </div>
     );
 }
